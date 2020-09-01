@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="home.dao.MemberDAO">
+	<resultMap type="memberVO" id="memberMap">
+		<result column="email_domain" property="emailId" />
+		<result column="email_id" property="emailDomain" />
+	</resultMap>	
+
+	<!-- 로그인을 위한 조회 -->
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		SELECT ID, TYPE
+		FROM TB_MEMBER
+		WHERE id = #{id} and PWD = #{pwd}
+	</select>
+	
+	<!-- 회원 상세조회(마이페이지) -->
+	<select id="selectOne" parameterType="memberVO" resultType="memberVO">
+		SELECT ID, NAME, CONTACT, EMAIL_ID, EMAIL_DOMAIN, ADDR1, ADDR2, TYPE
+		FROM TB_MEMBER
+		WHERE id = #{id}
+	</select>
+</mapper>

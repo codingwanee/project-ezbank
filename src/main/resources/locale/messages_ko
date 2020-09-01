@@ -1,0 +1,16 @@
+##### text
+text.main.l=<span style="color:RGB(0, 170, 170)">더<span> 빠르고 <span style='color:RGB(0, 170, 170)'>더<span> 쉬운!<br>HanaEZ-<span style='color:RGB(0, 170, 170)'>UP<span>
+text.main.s=신뢰받고 앞서가는 글로벌 금융그룹
+##### members
+member.btn.join=회원가입
+member.btn.login=로그인
+member.btn.logout=로그아웃
+member.btn.mypage=마이페이지
+##### menus
+menu.cs=고객지원
+menu.cs.notice=공지사항
+menu.cs.translator=통역인 구인/구직
+menu.branch=지점이용
+##### Errors
+error.common=오류가 발생했습니다.
+error.minlength={0}은 {1}자 이상의 문자를 입력하셔야 합니다.
