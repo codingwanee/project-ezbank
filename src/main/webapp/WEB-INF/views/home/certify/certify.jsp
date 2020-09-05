@@ -6,7 +6,7 @@
 </header>
 <!-- End Header -->
 
-<!-- main -->
+<!-- ======= Main ======= -->
 <div id="wrapper">
 	<!-- ======= Breadcrumbs ======= -->
 	<section id="breadcrumbs" class="breadcrumbs">
@@ -25,23 +25,24 @@
 			<div class="row col-lg-12 align-items-center justify-content-center ">
 				<div class="section-title" data-aos="fade-up">
 					<h2>비대면 인증</h2>
-					<p>인증 서류 업로드</p>
+					<p>외국인 등록증 업로드</p>
 				</div>
 				<!-- <div class="row" data-aos="fade-up" data-aos-delay="100"> -->
 			</div>
 
-			<div class="section-discription">
 				<div
 					class="row col-lg-12 d-flex align-items-center justify-content-center">
+			<div class="section-discription">
 					<p>
-						외국인 등록증, 비자 사본을 업로드 해주세요. <br>이미지 파일 형식만 업로드 가능합니다.(jpg, png,
+						외국인 등록증을 업로드 해주세요. <br>이미지 파일 형식만 업로드 가능합니다.(jpg, png,
 						gif) <br>파일 크기는 5mb를 넘을 수 없습니다.
 					</p>
 				</div>
 			</div>
-			<div class="section-content">
 				<div
 					class="row col-lg-12 d-flex align-items-center justify-content-center">
+			<div class="section-content">
+			<p></p>
 
 					<form action="${ pageContext.request.contextPath }/certify"
 						method="post" name="certUpload" enctype="multipart/form-data">
@@ -65,7 +66,7 @@
 						<li data-aos="fade-up"></li>
 						-->
 							<li><input type="file" name="regCard"></li>
-							<li><input type="file" name="visa"></li>
+<!-- 							<li><input type="file" name="visa"></li> -->
 							<li><input type="submit" value="등록"
 								class="btn btn-primary w-100" style="margin-left: 0"><i class="fe fe-upload fe-16"></i></input>
 								

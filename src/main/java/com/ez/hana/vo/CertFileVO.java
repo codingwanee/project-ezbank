@@ -2,49 +2,37 @@ package com.ez.hana.vo;
 
 public class CertFileVO {
 
-	int fid;
-	int certId;
-	String type;
-	String orName;
-	String stName;
+	String saveName;
+	String originName;
+	String certId;
 
-	public int getFid() {
-		return fid;
+	public String getSaveName() {
+		return saveName;
 	}
 
-	public void setFid(int fid) {
-		this.fid = fid;
+	public void setSaveName(String saveName) {
+		this.saveName = saveName;
 	}
 
-	public int getCertId() {
+	public String getOriginName() {
+		return originName;
+	}
+
+	public void setOriginName(String originName) {
+		this.originName = originName;
+	}
+
+	public String getCertId() {
 		return certId;
 	}
 
-	public void setCertId(int certId) {
+	public void setCertId(String certId) {
 		this.certId = certId;
 	}
 
-	public String getType() {
-		return type;
+	@Override
+	public String toString() {
+		return "CertFileVO [saveName=" + saveName + ", originName=" + originName + ", certId=" + certId + "]";
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getOrName() {
-		return orName;
-	}
-
-	public void setOrName(String orName) {
-		this.orName = orName;
-	}
-
-	public String getStName() {
-		return stName;
-	}
-
-	public void setStName(String stName) {
-		this.stName = stName;
-	}
 }

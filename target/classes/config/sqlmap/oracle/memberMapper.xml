@@ -17,7 +17,7 @@
 	
 	<!-- 회원 상세조회(마이페이지) -->
 	<select id="selectOne" parameterType="memberVO" resultType="memberVO">
-		SELECT ID, NAME, CONTACT, EMAIL_ID, EMAIL_DOMAIN, ADDR1, ADDR2, TYPE
+		SELECT ID, NAME, CONTACT, NATIONALITY, EMAIL_ID, EMAIL_DOMAIN, ADDR1, ADDR2, TYPE
 		FROM TB_MEMBER
 		WHERE id = #{id}
 	</select>

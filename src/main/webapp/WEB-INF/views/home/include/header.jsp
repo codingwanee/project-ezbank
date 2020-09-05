@@ -55,6 +55,8 @@
 
 	<!-- ======= Header ======= -->
 	<header id="header" class="fixed-top">
+	<!-- End Header -->
+	
 		<div class="container-fluid d-flex">
 
 			<div class="logo mr-auto">
@@ -69,11 +71,12 @@
 				<ul>
 					<li class="active"><a
 						href="${ pageContext.request.contextPath }/fakelogin">Home</a></li>
-					<li><a href="#about">About Us</a></li>
-					<li><a href="#services">Services</a></li>
-					<li><a href="#portfolio">Portfolio</a></li>
-					<li><a href="${ pageContext.request.contextPath }/branch">
-					<spring:message code="menu.branch"></spring:message></a></li>
+					<li><a href="${ pageContext.request.contextPath }/sample">테스트</a></li>
+					<li><a href="${ pageContext.request.contextPath }/certify">회원인증</a></li>
+					<li><a href="<c:url value="${ pageContext.request.contextPath }/i18n.do?lang=ko" />">한국어</a>
+					<a href="<c:url value="${ pageContext.request.contextPath }/i18n.do?lang=en" />">English</a></li>
+					<li>
+ 					<a href="${ pageContext.request.contextPath }/branch"><spring:message code="menu.branch"></spring:message></a></li>
 					<li class="drop-down"><a href="#">
 					<spring:message code="menu.cs"></spring:message></a>
 						<ul>

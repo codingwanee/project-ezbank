@@ -2,11 +2,13 @@ package com.ez.hana.vo;
 
 public class CertHistoryVO {
 
-	String certId; // 신청번호
-	String applicant; // 신청자
-	String regFid; // 
-	String visaFid; // 비자파일 아이디
-	String status; // 처리상태
+	String certId;
+	String applicantId;
+	String applicantNm;
+	String applicantNtn;
+	String fileName;
+	String status;
+	String regDate;
 
 	public String getCertId() {
 		return certId;
@@ -16,28 +18,36 @@ public class CertHistoryVO {
 		this.certId = certId;
 	}
 
-	public String getApplicant() {
-		return applicant;
+	public String getApplicantId() {
+		return applicantId;
 	}
 
-	public void setApplicant(String applicant) {
-		this.applicant = applicant;
+	public void setApplicantId(String applicantId) {
+		this.applicantId = applicantId;
 	}
 
-	public String getRegFid() {
-		return regFid;
+	public String getApplicantNm() {
+		return applicantNm;
 	}
 
-	public void setRegFid(String regFid) {
-		this.regFid = regFid;
+	public void setApplicantNm(String applicantNm) {
+		this.applicantNm = applicantNm;
 	}
 
-	public String getVisaFid() {
-		return visaFid;
+	public String getApplicantNtn() {
+		return applicantNtn;
 	}
 
-	public void setVisaFid(String visaFid) {
-		this.visaFid = visaFid;
+	public void setApplicantNtn(String applicantNtn) {
+		this.applicantNtn = applicantNtn;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public String getStatus() {
@@ -48,6 +58,19 @@ public class CertHistoryVO {
 		this.status = status;
 	}
 
+	public String getRegDate() {
+		return regDate;
+	}
 
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
+	@Override
+	public String toString() {
+		return "CertHistoryVO [certId=" + certId + ", applicantId=" + applicantId + ", applicantNm=" + applicantNm
+				+ ", applicantNtn=" + applicantNtn + ", fileName=" + fileName + ", status=" + status + ", regDate="
+				+ regDate + "]";
+	}
 
 }

@@ -34,7 +34,7 @@
 	
 		SELECT *
 		FROM TB_RESERVATION
-		WHERE BRANCH = #{branch} AND res_date = '20-09-04'
+		WHERE BRANCH = #{branch} AND res_date = #{resDate}
 	
 	</select>
 	

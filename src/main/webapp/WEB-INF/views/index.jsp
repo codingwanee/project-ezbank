@@ -619,14 +619,12 @@
 				</div>
 
 			</div>
-
 		</div>
 	</section>
 	<!-- End Contact Us Section -->
 
 </main>
 <!-- End #main -->
-
 <!-- ======= Footer ======= -->
 	<footer>
 <%-- 		<jsp:include page="/WEB-INF/views/home/include/footer.jsp" /> --%>
