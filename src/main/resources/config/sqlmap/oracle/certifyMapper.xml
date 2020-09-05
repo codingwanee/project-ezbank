@@ -3,30 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="certifyMapper">
-	<resultMap type="certFileVO" id="certFileMap">
-		<result column="REG_FID" property="regFid" />
-		<result column="VISA_FID" property="visaFid" />
+	<resultMap type="certHistoryVO" id="certHistoryMap">
+<!--		<result column="VISA_TYPE" property="visaType" />-->
+		<result column="FILE_NM_REG" property="regFileName" />
+		<result column="FILE_NM_VISA" property="visaFileName" />
 	</resultMap>
 	
-	<!-- 비대면인증 신청내역 -->
+	<!-- ===== 비대면인증 신청내역 ===== -->
 	<!-- 삽입 -->
 	<insert id="insertHistory" parameterType="certHistoryVO">
 		INSERT INTO TB_CERT_HISTORY
-		(CERID, APPLICANT, REG_FID, VISA_FID, STATUS)
-		VALUES(#{cerId},#{applicant},#{redFid},#{visaFid},#{status})
+		(CERTID, APPLICANT, REG_DATE, STATUS)
+		VALUES(#{certId},#{applicant}, SYSDATE, '0')
 	</insert>
 		
 	<!-- 전체조회 -->
-	<select id="selectAllHistory" resultType="certHistoryVO">
+	<select id="selectAllHistory" resultType="certHistoryVO" resultMap="certHistoryMap" >
 		SELECT *
 		FROM TB_CERT_HISTORY
 	</select>
 	
 	<!-- 상세조회 -->
-	<select id="selectOneHistory" resultType="certHistoryVO">
+	<select id="selectOneHistory" resultType="certHistoryVO" resultMap="certHistoryMap" >
 		SELECT *
 		FROM TB_CERT_HISTORY
-		WHERE CERID = #{cerId}
+		WHERE CERTID = #{certId}
 	</select>
 	
 	<!-- certId에 대한 시퀀스 -->
@@ -34,19 +35,22 @@
 		SELECT SEQ_CERT_HISTORY.NEXTVAL FROM DUAL
 	</select>
 
-	<!-- 파일 -->
-	<!-- 신청번호에 따른 조회 -->
-	<select id="selectFilesByCertId" resultType="certFileVO" resultMap="certFileMap">
-		SELECT STORED_NAME 
+	
+
+
+	<!-- ===== 파일 ===== -->
+	<!-- 신청번호에 따른 파일이름 반환(외국인등록증, 비자) -->
+	<select id="selectByCertId" parameterType="String" resultType="String">
+		SELECT SAVENAME
 		FROM TB_CERT_FILE 
-		WHERE CERID = #{cerId}
+		WHERE CERTID = #{certId}
 	</select>
 	
 	<!-- 파일 삽입 -->
 	<insert id="insertFile" parameterType="certFileVO">
 		INSERT INTO TB_CERT_FILE
-		(FID, CERTID,ORNAME, STNAME)
-		VALUES(#{fid}, #{certId},#{orName},#{stName})
+		(SAVENAME, ORGINNAME, CERTID)
+		VALUES(#{saveName}, #{originName}, -1)
 	</insert>	
 
 </mapper>	

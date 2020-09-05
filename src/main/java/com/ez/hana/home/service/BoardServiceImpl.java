@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ez.hana.home.dao.BoardDAO;
+import com.ez.hana.dao.BoardDAO;
 import com.ez.hana.vo.BoardVO;
 
 @Service

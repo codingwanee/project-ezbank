@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ez.hana.home.dao.MemberDAO;
+import com.ez.hana.dao.MemberDAO;
 import com.ez.hana.vo.MemberVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
