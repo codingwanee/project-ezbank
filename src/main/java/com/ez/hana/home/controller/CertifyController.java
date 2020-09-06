@@ -15,10 +15,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ez.hana.dao.CodeDAO;
 import com.ez.hana.dao.MemberDAO;
 import com.ez.hana.home.service.CertifyService;
 import com.ez.hana.vo.CertFileVO;
 import com.ez.hana.vo.CertHistoryVO;
+import com.ez.hana.vo.CountryVO;
 import com.ez.hana.vo.MemberVO;
 
 @Controller
@@ -29,6 +31,9 @@ public class CertifyController {
 	
 	@Autowired
 	MemberDAO memberDAO;
+	
+	@Autowired
+	CodeDAO codeDAO;
 	
 	/* === 비대면인증 페이지로 이동 === */		
 	@GetMapping("/certify")
@@ -51,7 +56,8 @@ public class CertifyController {
 		MemberVO applicantVO = memberDAO.selectOne(loginVO);
 		
 		String nation = applicantVO.getNationality(); // 신청자의 국적정보 반환
-		String certId = nation + String.format("%06d", getCertId());// 국적 정보와 시퀀스가 조합된 12자리의 신청번호 생성
+		CountryVO countryVO = codeDAO.getCountry(nation);
+		String certId = countryVO.getCodeAlpha3() + String.format("%09d", getCertId());// 국적 정보와 시퀀스가 조합된 12자리의 신청번호 생성
 		
 		ModelAndView mav = new ModelAndView("/home/certify/completed");
 		
@@ -94,12 +100,14 @@ public class CertifyController {
 		
 		/* === 신청기록 생성 === */
 		CertHistoryVO certHistoryVO = new CertHistoryVO();
+			
 		
 		certHistoryVO.setCertId(certId);
 		certHistoryVO.setApplicantId(applicantVO.getId());
-		certHistoryVO.setApplicantNm(applicantVO.getName());
-		certHistoryVO.setApplicantNtn(applicantVO.getNationality());
-		certHistoryVO.setFileName(saveName);
+		certHistoryVO.setApplicantNm(applicantVO.getName());		
+		certHistoryVO.setApplicantNtnKo(countryVO.getNameKo());
+		certHistoryVO.setApplicantNtnEn(countryVO.getNameEn());
+		certHistoryVO.setFilEname(saveName);
 		
 		certifyService.saveCertHistory(certHistoryVO);
 		

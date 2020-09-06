@@ -12,6 +12,7 @@
 		<typeAlias type="com.ez.hana.vo.CertFileVO" alias="certFileVO" />
 		<typeAlias type="com.ez.hana.vo.ReservationVO" alias="reservationVO" />
 		<typeAlias type="com.ez.hana.vo.EmployeeVO" alias="employeeVO" />
+		<typeAlias type="com.ez.hana.vo.CountryVO" alias="countryVO" />
 	</typeAliases>
 	
 	<!--<typeHandlers>

@@ -3,10 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="codeMapper">
+  	<resultMap type="countryVO" id="countryMap">
+		<result column="CODE_ALPHA3" property="codeAlpha3" />
+		<result column="CODE_ALPHA2" property="codeAlpha2" />
+	</resultMap>	
   
   <!-- 국가정보 반환 -->
-  <select id="" resultType="String">
-  	
+  <select id="selectOneCountry" parameterType="String" resultType="countryVO">
+  	SELECT *
+  	FROM TB_COUNTRY
+  	WHERE CODE_ALPHA3 = #{country} OR CODE_ALPHA2 = #{country} OR NAME_KO = #{country} OR NAME_EN = #{country}
   </select>
   
   </mapper> 
