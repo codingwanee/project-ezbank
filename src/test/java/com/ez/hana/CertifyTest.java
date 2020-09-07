@@ -29,7 +29,7 @@ public class CertifyTest {
 		certHistoryVO.setCertId("test000002");
 		certHistoryVO.setApplicantId("user");
 		certHistoryVO.setApplicantNm("user");
-		certHistoryVO.setApplicantNtn("korea");
+		certHistoryVO.setApplicantNtnEn("korea");
 		certHistoryVO.setFileName("aaaaa");
 		
 		certifyDAO.insertHistory(certHistoryVO);

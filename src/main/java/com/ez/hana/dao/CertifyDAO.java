@@ -1,5 +1,7 @@
 package com.ez.hana.dao;
 
+import java.util.List;
+
 import com.ez.hana.vo.CertFileVO;
 import com.ez.hana.vo.CertHistoryVO;
 
@@ -26,8 +28,12 @@ public interface CertifyDAO {
 	public void insertHistory(CertHistoryVO certHistoryVO);
 
 	
+	
 	/**
-	 * 파일명 조회
+	 * 신청기록 전체조회
+	 * @return certList
 	 */
+	public List<CertHistoryVO> selectAllHistory();
+
 
 }

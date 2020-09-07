@@ -1,5 +1,7 @@
 package com.ez.hana.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,6 +41,16 @@ public class CertifyDAOImpl implements CertifyDAO {
 	@Override
 	public void insertHistory(CertHistoryVO certHistoryVO) {
 		sqlSession.insert("certifyMapper.insertHistory", certHistoryVO);		
+	}
+	
+	/**
+	 * 신청기록 전체조회
+	 * @return certList
+	 */
+	@Override
+	public List<CertHistoryVO> selectAllHistory() {
+		List<CertHistoryVO> certList = sqlSession.selectList("certifyMapper.selectAllHistory");
+		return certList;
 	}
 	
 

@@ -1,10 +1,14 @@
 package com.ez.hana.vo;
 
+/**
+ * @author HP
+ *
+ */
 public class CountryVO {
 
 	String nameKo;
 	String codeAlpha3;
-	String codeAplha2;
+	String codeAlpha2;
 	String nameEn;
 
 	public String getNameKo() {
@@ -23,12 +27,12 @@ public class CountryVO {
 		this.codeAlpha3 = codeAlpha3;
 	}
 
-	public String getCodeAplha2() {
-		return codeAplha2;
+	public String getCodeAlpha2() {
+		return codeAlpha2;
 	}
 
-	public void setCodeAplha2(String codeAplha2) {
-		this.codeAplha2 = codeAplha2;
+	public void setCodeAlpha2(String codeAlpha2) {
+		this.codeAlpha2 = codeAlpha2;
 	}
 
 	public String getNameEn() {
@@ -41,7 +45,7 @@ public class CountryVO {
 
 	@Override
 	public String toString() {
-		return "CountryVO [nameKo=" + nameKo + ", codeAlpha3=" + codeAlpha3 + ", codeAplha2=" + codeAplha2 + ", nameEn="
+		return "CountryVO [nameKo=" + nameKo + ", codeAlpha3=" + codeAlpha3 + ", codeAlpha2=" + codeAlpha2 + ", nameEn="
 				+ nameEn + "]";
 	}
 

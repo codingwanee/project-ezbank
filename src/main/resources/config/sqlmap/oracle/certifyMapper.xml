@@ -6,7 +6,8 @@
 	<resultMap type="certHistoryVO" id="certHistoryMap">
 		<result column="APPLICANT_ID" property="applicantId" />
 		<result column="APPLICANT_NM" property="applicantNm" />
-		<result column="APPLICANT_NTN" property="applicantNtn" />
+		<result column="APPLICANT_NTN_KO" property="applicantNtnKo" />
+		<result column="APPLICANT_NTN_EN" property="applicantNtnEn" />
 		<result column="FILE_NAME" property="fileName" />
 		<result column="REG_DATE" property="regDate" />
 	</resultMap>
@@ -15,8 +16,8 @@
 	<!-- 삽입 -->
 	<insert id="insertHistory" parameterType="certHistoryVO">
 		INSERT INTO TB_CERT_HISTORY
-		(CERTID, APPLICANT_ID, APPLICANT_NM, APPLICANT_NTN, FILE_NAME, STATUS, REG_DATE)
-		VALUES(#{certId},#{applicantId},#{applicantNm},#{applicantNtn}, #{fileName}, '0', TO_CHAR(SYSDATE, 'YY-MM-DD'))
+		(CERTID, APPLICANT_ID, APPLICANT_NM, APPLICANT_NTN_KO, APPLICANT_NTN_EN, FILE_NAME, STATUS, REG_DATE)
+		VALUES(#{certId},#{applicantId},#{applicantNm},#{applicantNtnKo}, #{applicantNtnEn},#{fileName}, '0', TO_CHAR(SYSDATE, 'YY-MM-DD'))
 	</insert>
 		
 	<!-- 전체조회 -->

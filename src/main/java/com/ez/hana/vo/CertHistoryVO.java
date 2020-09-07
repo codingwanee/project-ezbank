@@ -1,5 +1,9 @@
 package com.ez.hana.vo;
 
+/**
+ * @author HP
+ *
+ */
 public class CertHistoryVO {
 
 	String certId;
@@ -7,7 +11,7 @@ public class CertHistoryVO {
 	String applicantNm;
 	String applicantNtnKo;
 	String applicantNtnEn;
-	String filEname;
+	String fileName;
 	String status;
 	String regDate;
 
@@ -51,12 +55,12 @@ public class CertHistoryVO {
 		this.applicantNtnEn = applicantNtnEn;
 	}
 
-	public String getFilEname() {
-		return filEname;
+	public String getFileName() {
+		return fileName;
 	}
 
-	public void setFilEname(String filEname) {
-		this.filEname = filEname;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public String getStatus() {
@@ -78,7 +82,7 @@ public class CertHistoryVO {
 	@Override
 	public String toString() {
 		return "CertHistoryVO [certId=" + certId + ", applicantId=" + applicantId + ", applicantNm=" + applicantNm
-				+ ", applicantNtnKo=" + applicantNtnKo + ", applicantNtnEn=" + applicantNtnEn + ", filEname=" + filEname
+				+ ", applicantNtnKo=" + applicantNtnKo + ", applicantNtnEn=" + applicantNtnEn + ", fileName=" + fileName
 				+ ", status=" + status + ", regDate=" + regDate + "]";
 	}
 

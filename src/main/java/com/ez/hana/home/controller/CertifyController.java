@@ -107,7 +107,7 @@ public class CertifyController {
 		certHistoryVO.setApplicantNm(applicantVO.getName());		
 		certHistoryVO.setApplicantNtnKo(countryVO.getNameKo());
 		certHistoryVO.setApplicantNtnEn(countryVO.getNameEn());
-		certHistoryVO.setFilEname(saveName);
+		certHistoryVO.setFileName(saveName);
 		
 		certifyService.saveCertHistory(certHistoryVO);
 		
