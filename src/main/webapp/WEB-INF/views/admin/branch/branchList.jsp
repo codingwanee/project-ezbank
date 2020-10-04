@@ -18,12 +18,16 @@
 		<main role="main" class="main-content">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
-					<div class="col-12">
+					<div class="col-12 col-lg-10">
+<%-- 						<div class="row col-sm-12 justify-content-center">
+							<img style="width: 40%"
+								src="${ pageContext.request.contextPath }/resources/images/ad_branch.png">
+						</div> --%>
 						<div class="row align-items-center my-4">
 							<div class="col">
 								<h2 class="h3 mb-0 page-title">외국인 특화지점 목록</h2>
 							</div>
-							<div class="col-auto">
+							<div class="col-auto ">
 								<a href="${pageContext.request.contextPath}/admin/branch/register"><button type="button" class="btn btn-primary">
 									<span class="fe fe-plus fe-12 mr-2"></span>신규등록
 								</button></a>

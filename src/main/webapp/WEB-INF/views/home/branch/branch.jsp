@@ -41,7 +41,9 @@
 			<div
 				class="container-fluid d-flex align-items-center justify-content-center">
 				<div class="col-12">
-					<h2 class="page-title"><spring:message code="branch.search.title"></spring:message></h2>
+					<h2 class="page-title">
+						<spring:message code="branch.search.title"></spring:message>
+					</h2>
 					<p class="card-text">
 						<spring:message code="branch.search.text"></spring:message>
 					</p>
@@ -52,19 +54,21 @@
 									<div class="container">
 										<div class="row">
 											<div class="col-sm-12">
-												<form class="form-inline">
-												<div class="form-group">
-													<div class="input-group">
-														<input type="text" class="form-control" id="keyword"
-															placeholder="Searching keyword...">
-													</div>
-													<!-- /input-group -->
+												<div class="form-row">
+													<form class="form-inline">
+														<div class="form-group">
+															<div class="input-group">
+																<input type="text" class="form-control" id="keyword"
+																	placeholder="Searching keyword...">
+															</div>
+															<!-- /input-group -->
+														</div>
+														<span class="input-group-btn"><button
+																class="btn btn-default" type="button"
+																onclick="javascript:getResults(); return false;">Search</button>
+														</span>
+													</form>
 												</div>
-												<span class="input-group-btn"><button
-														class="btn btn-default" type="button"
-														onclick="javascript:getResults(); return false;">Search</button>
-												</span>
-												</form>
 											</div>
 										</div>
 										<!-- /.col-lg-6 -->
@@ -84,10 +88,11 @@
 												</div>
 												<div
 													class="row col-md-12 align-items-center justify-content-center">
-													<div id="branchFooter">				
-													<button type="button" class="btn btn-outline-info"
-															data-toggle="modal" data-target="#sundayBranch">선택지점 이용예약</button>									
-															<!-- <button onclick="sendBranch()" class="btn btn-info">선택지점 이용예약</button> -->
+													<div id="branchFooter">
+														<button type="button" class="btn btn-outline-info"
+															data-toggle="modal" data-target="#sundayBranch">선택지점
+															이용예약</button>
+														<!-- <button onclick="sendBranch()" class="btn btn-info">선택지점 이용예약</button> -->
 													</div>
 												</div>
 											</div>
@@ -124,7 +129,6 @@
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 		// 목록에서 지점을 선택하면 해당 지점으로 좌표를 이동하고 마커, 정보를 표시해준다.
-
 		// kakao map :: 좌표 이동시키기
 		function setCenter(lat, lon) {
 
@@ -158,41 +162,45 @@
 
 			// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 			infowindow.open(map, marker);
-			*/
+			 */
 
-			
 			// 선택지점 셋팅
-			
 		}
 	</script>
 	<script>
-	var branch = '';
-	
+		var branch = '';
+
 		function getResults() {
 			let keyword = $("#keyword").val();
 			$.ajax({
-				url : '${ pageContext.request.contextPath }/branch/search/'	+ keyword,
+				url : '${ pageContext.request.contextPath }/branch/search/'
+						+ keyword,
 				type : 'get',
 				success : function(data) {
-					$('#brSearch-result').empty();					
-					let list = JSON.parse(data);					
-					
+					$('#brSearch-result').empty();
+					let list = JSON.parse(data);
+
 					if (data == null) {
-						let str = 'No results for ' + keyword + '. Please check keyword again.';
+						let str = 'No results for ' + keyword
+								+ '. Please check keyword again.';
 						$('#brSearch-result').append(str);
-					} else {					
-						$(list).each(								
-								function() {			
+					} else {
+						$(list).each(
+								function() {
 									/* let bid = "a" + this.bid; */
-									
+
 									let str = '';
 									str += '<hr>';
-									str += '<div id="' + this.bid + '" class="branch"'
-									str += 'onclick="javascript:setCenter(' + this.loc + '); return false;">';
-									str += '<strong>' + this.nameKo + ' / ' + this.nameEn + '</strong>';
-									str += '<br>' + this.addrKoOld + '<br>' + this.addrEn
+									str += '<div id="' + this.bid
+											+ '" class="branch"'
+									str += 'onclick="javascript:setCenter('
+											+ this.loc + '); return false;">';
+									str += '<strong>' + this.nameKo + ' / '
+											+ this.nameEn + '</strong>';
+									str += '<br>' + this.addrKoOld + '<br>'
+											+ this.addrEn
 									str += '</div>'
-									
+
 									$('#brSearch-result').append(str);
 								})
 					}
@@ -207,29 +215,28 @@
 
 		//js		
 		$(document).on('click', '.branch', function() {
-			branch = $(this).attr('id');			
+			branch = $(this).attr('id');
 		});
-/*
-	function setBranch(bid) {
- 		console.log(bid)
-		branch = bid;
-	}
+		/*
+		 function setBranch(bid) {
+		 console.log(bid)
+		 branch = bid;
+		 }
 
 		
-	function selectBranch(lat, lon) {
-		setCenter(lat, lon)
-//		setBranch(bid)
-	}
-*/	
-	
-	function sendBranch() {
- 		location.href="${ pageContext.request.contextPath }/branch/reserv/" + branch
-	}	
+		 function selectBranch(lat, lon) {
+		 setCenter(lat, lon)
+		 //		setBranch(bid)
+		 }
+		 */
 
-	
+		function sendBranch() {
+			location.href = "${ pageContext.request.contextPath }/branch/reserv/"
+					+ branch
+		}
 	</script>
-	<jsp:include page="/WEB-INF/views/home/branch/sundayBranches.jsp" />	
-	
+	<jsp:include page="/WEB-INF/views/home/branch/sundayBranches.jsp" />
+
 	<!-- ======= Footer ======= -->
 	<%@include file="/WEB-INF/views/home/include/footer.jsp"%>
 	<jsp:include page="/WEB-INF/views/home/include/common-js.jsp" />

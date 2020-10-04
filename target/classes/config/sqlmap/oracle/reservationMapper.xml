@@ -12,7 +12,7 @@
 	
 	<!-- 아직 처리되지 않은 지점 예약목록을 확인 -->
 	<select id="selectAll" parameterType="String" resultType="reservationVO" resultMap="reserveMap">
-		SELECT *
+		SELECT RES_ID, BRANCH, MEMBER, RES_DATE, RES_TIME, SERVICE, STATUS, TO_CHAR(REG_DATE, 'YY-MM-DD') AS REG_DATE
 		FROM TB_RESERVATION
 		WHERE RES_DATE = #{today} AND STATUS = '0'
 		ORDER BY RES_TIME ASC
@@ -24,7 +24,7 @@
 		(RES_ID, BRANCH, MEMBER, RES_DATE, RES_TIME, SERVICE, STATUS, REG_DATE)
 		VALUES(
 		 (CONCAT('RSV', (LPAD(TO_CHAR(SEQ_RESERVATION.NEXTVAL), 9, '0'))))
-		,#{branch},#{member},#{resDate},#{resTime},#{service},'0', SYSDATE)
+		,#{branch},#{member},#{resDate},#{resTime},#{service},'0', TO_CHAR(SYSDATE, 'YY-MM-DD'))
 	</insert>
 	
 	<!-- 로그인 한 직원의 근무지점에 따라 아직 처리되지 않은 지점 예약목록을 확인 -->

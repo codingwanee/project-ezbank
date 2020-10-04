@@ -61,7 +61,7 @@
 									</tr>
 									<tr>
 										<th><span class="circle"></span> 근무지점</th>
-										<td>김포점</td>
+										<td>외국인관리부</td>
 										<th><span class="circle"></span> 내선번호</th>
 										<td>382</td>
 									</tr>

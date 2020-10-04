@@ -20,6 +20,14 @@
 	ORDER BY NUM DESC
   </select>
   
+  <!-- 숨긴글 조회 -->
+  <select id="selectAllHidden" resultType="boardVO" resultMap="boardMap">
+    SELECT NUM, WRITER, TITLE, VIEW_CNT, DEPTH, SUBJECT, TO_CHAR(REG_DATE, 'YYYY-MM-DD') AS REG_DATE
+  	FROM TB_BOARD
+  	WHERE STATUS = '1'
+	ORDER BY NUM DESC
+  </select>
+  
   <!-- 상세글 조회 -->
   <select id="selectOne" parameterType="int" resultType="boardVO" resultMap="boardMap">
   	SELECT NUM, WRITER, TITLE, CONTENT, REG_DATE, VIEW_CNT

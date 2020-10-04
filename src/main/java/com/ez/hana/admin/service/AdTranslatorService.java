@@ -18,6 +18,10 @@ public interface AdTranslatorService {
 	 */
 	public TranslatorVO getTranslatorDetail(int tid);
 	
+	/**
+	 * 활동중인 통역사 조회
+	 */
+	public List<TranslatorVO> getActiveTranslatorList(); 
 	
 	
 }

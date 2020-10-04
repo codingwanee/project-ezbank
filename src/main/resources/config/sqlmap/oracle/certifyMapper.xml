@@ -21,11 +21,11 @@
 	</insert>
 		
 	<!-- 전체조회 -->
-	<select id="selectAllHistory" resultType="certHistoryVO" resultMap="certHistoryMap" >
-		SELECT *
+	<select id="selectAllHistory" resultType="certHistoryVO" resultMap="certHistoryMap">
+		SELECT CERTID, APPLICANT_ID, APPLICANT_NM, APPLICANT_NTN_KO, APPLICANT_NTN_EN, FILE_NAME, STATUS, TO_CHAR(REG_DATE, 'YY-MM-DD') AS REG_DATE
 		FROM TB_CERT_HISTORY
 	</select>
-	
+		
 	<!-- 상세조회 -->
 	<select id="selectOneHistory" resultType="certHistoryVO" resultMap="certHistoryMap" >
 		SELECT *
@@ -36,7 +36,7 @@
 	
 	<!-- 해당 신청자의 지난 신청목록 -->
 	<select id="selectAllByApplicant" parameterType="String" resultType="certHistoryVO" resultMap="certHistoryMap" >
-		SELECT *
+		SELECT CERTID, APPLICANT_ID, APPLICANT_NM, APPLICANT_NTN_KO, APPLICANT_NTN_EN, FILE_NAME, STATUS, TO_CHAR(REG_DATE, 'YY-MM-DD') AS REG_DATE
 		FROM TB_CERT_HISTORY
 		WHERE APPLICANT_ID = #{applicantId}
 	</select>

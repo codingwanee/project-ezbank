@@ -21,4 +21,11 @@ public class AdBoardServiceImpl implements AdBoardService {
 		return list;
 	}
 
+	// 숨긴글 조회
+	@Override
+	public List<BoardVO> getBoardHiddenList()  {
+		List<BoardVO> list = boardDAO.selectAllHidden();
+		return list;
+	}
+
 }

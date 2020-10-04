@@ -1,596 +1,220 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="en">
-<head>    <!-- ======= Head ======= -->
-    <jsp:include page="/WEB-INF/views/admin/include/head.jsp"/>
-    <!-- End head -->
-<script src="http://code.jquery.com/jquery-3.5.1.min.js" ></script>
+<html>
+<head>
+<!-- ======= Head ======= -->
+<title>HanaEZ UP Admin Side</title>
+
+
+
+<!-- Favicons -->
+<link href="${ pageContext.request.contextPath }/resources/assets/img/favicon.png" rel="icon">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Simple bar CSS -->
+    <link rel="stylesheet" href="css/simplebar.css">
+    <!-- Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/feather.css">
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/daterangepicker.css">
+
+    <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/assets/css/app-light.css" id="lightTheme">
+
 </head>
-<body class="vertical  light  ">
-<div class="wrapper">
-       <!-- ======= Aside Menubar ======= -->
-    <jsp:include page="/WEB-INF/views/admin/include/aside.jsp"/>
-    <!-- Aside Menubar -->
-    <main role="main" class="main-content">
+  <body class="vertical  light  ">
+    <div class="wrapper">
+    
+		<!-- ======= Aside Menubar ======= -->
+		<jsp:include page="/WEB-INF/views/admin/include/aside.jsp" />
+		<!-- Aside Menubar -->
+      <main role="main" class="main-content">
         <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <h2 class="page-title">Form advanced elements</h2>
-                    <p class="text-muted">Demo for form control styles, layout options, and custom components for
-                        creating a wide variety of forms.</p>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <p class="mb-3"><strong>Input group</strong></p>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">@</span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Username"
-                                               aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Recipient's username"
-                                               aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">@example.com</span>
-                                        </div>
-                                    </div>
-                                    <label for="basic-url">Your vanity URL</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"
-                                                  id="basic-addon3">https://example.com/users/</span>
-                                        </div>
-                                        <input type="text" class="form-control" id="basic-url"
-                                               aria-describedby="basic-addon3">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">$</span>
-                                        </div>
-                                        <input type="text" class="form-control"
-                                               aria-label="Amount (to the nearest dollar)">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">.00</span>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Button addons"
-                                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button" id="button-addon2">Button
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-secondary" type="button">Button</button>
-                                        </div>
-                                        <select class="custom-select" id="inputGroupSelect03"
-                                                aria-label="Example select with button addon">
-                                            <option selected>Choose...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <p class="mb-3"><strong>Switches</strong></p>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                        <label class="custom-control-label" for="customSwitch1">Toggle this switch
-                                            element</label>
-                                    </div>
-                                    <div class="custom-control custom-switch mb-2">
-                                        <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
-                                        <label class="custom-control-label" for="customSwitch2">Disabled switch
-                                            element</label>
-                                    </div>
-                                </div> <!-- /.card-body -->
-                            </div> <!-- /.card -->
-                        </div> <!-- /.col -->
-                        <div class="col-md-6">
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <p class="mb-2"><strong>Select2</strong></p>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="simple-select2">Simple Select</label>
-                                            <select class="form-control select2" id="simple-select2">
-                                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                                    <option value="AK">Alaska</option>
-                                                    <option value="HI">Hawaii</option>
-                                                </optgroup>
-                                                <optgroup label="Pacific Time Zone">
-                                                    <option value="CA">California</option>
-                                                    <option value="NV" disabled="disabled">Nevada (disabled)</option>
-                                                    <option value="OR">Oregon</option>
-                                                    <option value="WA">Washington</option>
-                                                </optgroup>
-                                            </select>
-                                        </div> <!-- form-group -->
-                                        <div class="form-group col-md-6">
-                                            <label for="multi-select2">Multiple Select</label>
-                                            <select class="form-control select2-multi" id="multi-select2">
-                                                <optgroup label="Mountain Time Zone">
-                                                    <option value="AZ">Arizona</option>
-                                                    <option value="CO">Colorado</option>
-                                                    <option value="ID">Idaho</option>
-                                                    <option value="MT">Montana</option>
-                                                    <option value="NE">Nebraska</option>
-                                                    <option value="NM">New Mexico</option>
-                                                    <option value="ND">North Dakota</option>
-                                                    <option value="UT">Utah</option>
-                                                    <option value="WY">Wyoming</option>
-                                                </optgroup>
-                                                <optgroup label="Central Time Zone">
-                                                    <option value="AL">Alabama</option>
-                                                    <option value="AR">Arkansas</option>
-                                                    <option value="IL">Illinois</option>
-                                                    <option value="IA">Iowa</option>
-                                                    <option value="KS">Kansas</option>
-                                                    <option value="KY">Kentucky</option>
-                                                    <option value="LA">Louisiana</option>
-                                                    <option value="MN">Minnesota</option>
-                                                    <option value="MS">Mississippi</option>
-                                                    <option value="MO">Missouri</option>
-                                                    <option value="OK">Oklahoma</option>
-                                                    <option value="SD">South Dakota</option>
-                                                    <option value="TX">Texas</option>
-                                                    <option value="TN">Tennessee</option>
-                                                    <option value="WI">Wisconsin</option>
-                                                </optgroup>
-                                            </select>
-                                        </div> <!-- form-group -->
-                                    </div> <!-- form-row -->
-                                </div> <!-- /.card-body -->
-                            </div> <!-- /.card -->
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <p class="mb-2"><strong>Date & Time Pickers</strong></p>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-8">
-                                            <label for="date-input1">Date Picker</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control drgpicker" id="date-input1"
-                                                       value="04/24/2020" aria-describedby="button-addon2">
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text" id="button-addon-date"><span
-                                                            class="fe fe-calendar fe-16"></span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="time-input2">Time Picker</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control time-input" id="time-input2"
-                                                       placeholder="" aria-describedby="button-addon2">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- /.card-body -->
-                            </div> <!-- /.card -->
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <p class="mb-2"><strong>Date Range Picker</strong></p>
-                                    <div class="form-group">
-                                        <label for="date-input1">Date Range</label>
-                                        <input type="text" name="datetimes" class="form-control datetimes"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="reportrange">Predefined Date Ranges</label>
-                                        <div id="reportrange" class="border px-2 py-2 bg-light">
-                                            <i class="fe fe-calendar fe-16 mx-2"></i>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div> <!-- /.card-body -->
-                            </div> <!-- /.card -->
-                        </div> <!-- /.col -->
-                        <div class="col-md-6">
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <p class="mb-2"><strong>Input masks</strong></p>
-                                    <div class="form-group mb-3">
-                                        <label for="example-date">Date</label>
-                                        <input class="form-control" id="example-date" type="date" name="date">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="example-month">Month</label>
-                                        <input class="form-control" id="example-month" type="month" name="month">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="example-time">Time</label>
-                                        <input class="form-control" id="example-time" type="time" name="time">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="example-week">Week</label>
-                                        <input class="form-control" id="example-week" type="week" name="week">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="example-number">Number</label>
-                                        <input class="form-control" id="example-number" type="number" name="number">
-                                    </div>
-
-                                </div> <!-- /.card-body -->
-                            </div> <!-- /.card -->
-                        </div> <!-- /.col -->
-                        <div class="col-md-6">
-                            <div class="card shadow mb-4">
-                                <div class="card-body">
-                                    <p class="mb-2"><strong>Custom input masks</strong></p>
-                                    <div class="form-group mb-3">
-                                        <label for="custom-placeholder">Mask placeholder</label>
-                                        <input class="form-control input-placeholder" id="custom-placeholder"
-                                               type="text" name="placeholder">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="custom-zip">Zip code</label>
-                                        <input class="form-control input-zip" id="custom-zip"
-                                               data-placeholder="__/__/____" data-mask="00/00/0000">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="custom-money">Money</label>
-                                        <input class="form-control input-money" id="custom-money" type="text"
-                                               name="money">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="custom-phone">US Telephone</label>
-                                        <input class="form-control input-phoneus" id="custom-phone"
-                                               placeholder="(987) 654-3210">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="custom-mixed">Mixed mask</label>
-                                        <input class="form-control input-mixed" id="custom-mixed" type="text"
-                                               placeholder="AAA 000-S0S">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="custom-ipadd">IP address</label>
-                                        <input class="form-control input-ip" id="custom-ipadd">
-                                    </div>
-                                </div> <!-- /.card-body -->
-                            </div> <!-- /.card -->
-                        </div> <!-- /.col -->
-                    </div> <!-- end section -->
-                    <div class="row mb-4">
-                        <div class="col-md-12">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <h5 class="card-title">Editor</h5>
-                                    <p>Pages type scale includes a range of contrasting styles that support the needs of
-                                        your product and its content.</p>
-                                    <!-- Create the editor container -->
-                                    <div id="editor" style="min-height:100px;">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lobortis
-                                            convallis efficitur. Cras nisi felis, luctus nec nibh quis, consequat
-                                            maximus velit. Ut iaculis at lacus sed pellentesque.</p>
-                                        <p>Maecenas luctus nisl quis leo porta, quis elementum mi tempus. Morbi blandit
-                                            metus ut nulla scelerisque, sed ornare purus elementum. Vivamus sed augue in
-                                            tortor commodo malesuada sed et nulla. Nullam cursus erat eget tellus
-                                            maximus, ut placerat lorem fringilla.</p>
-                                    </div>
-                                </div>
-                            </div>
+          <div class="row justify-content-center">
+            <div class="col-10 mx-auto">
+              <h2 class="h5 page-title" id="task-section">Sparkline Charts</h2>
+              <p class="text-muted">A jQuery plugin generates sparklines (small inline charts) directly in the browser using data supplied either inline in the HTML, or via javascript </p>
+              <div class="row">
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <strong class="card-title">Sparkline Bar</strong>
+                          <p class="small mb-0"><span class="fe fe-12 fe-arrow-up text-success"></span><span class="text-muted">37.7%</span></p>
                         </div>
-                    </div> <!-- end section -->
-                </div> <!-- .col-12 -->
-            </div> <!-- .row -->
+                        <div class="col-4 text-right">
+                          <span class="sparkline inlinebar"></span>
+                        </div>
+                      </div> <!-- /. row -->
+                    </div> <!-- /. card-body -->
+                  </div> <!-- /. card -->
+                </div> <!-- /. col -->
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <strong class="card-title">Sparkline line</strong>
+                          <p class="small mb-0"><span class="fe fe-12 fe-arrow-down text-danger"></span><span class="text-muted">-6.8%</span></p>
+                        </div>
+                        <div class="col-4 text-right">
+                          <span class="sparkline inlineline"></span>
+                        </div>
+                      </div> <!-- /. row -->
+                    </div> <!-- /. card-body -->
+                  </div> <!-- /. card -->
+                </div> <!-- /. col -->
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <strong class="card-title">Sparkline line</strong>
+                          <p class="small mb-0"><span class="fe fe-12 fe-arrow-up text-success"></span><span class="text-muted">32.7%</span></p>
+                        </div>
+                        <div class="col-4 text-right">
+                          <span class="sparkline inlinepie"></span>
+                        </div>
+                      </div> <!-- /. row -->
+                    </div> <!-- /. card-body -->
+                  </div> <!-- /. card -->
+                </div> <!-- /. col -->
+              </div> <!-- end section -->
+              <h2 class="h5" id="task-section">SVG gauge</h2>
+              <p class="text-muted">Minmalistic, configurable, animated SVG gauge. Zero dependencies </p>
+              <div class="row">
+                <div class="col-md-3 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <p class="small mb-3"><strong>CPU</strong></p>
+                      <div id="gauge1" class="gauge-container mx-auto">
+                      </div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+                <div class="col-md-3 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <p class="small mb-3"><strong>RAM</strong></p>
+                      <div id="gauge2" class="gauge-container mx-auto">
+                      </div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+                <div class="col-md-3 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <p class="small mb-3"><strong>Disk</strong></p>
+                      <div id="gauge3" class="gauge-container g3 mx-auto">
+                      </div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+                <div class="col-md-3 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <p class="small mb-3"><strong>Network</strong></p>
+                      <div id="gauge4" class="gauge-container g4 mx-auto">
+                        <span class="value-text text-muted small">MB/s</span>
+                      </div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+              </div> <!-- end section -->
+              <!-- Apex Radialbar Charts -->
+              <h2 class="h5" id="task-section">ApexCharts Radialbars</h2>
+              <p class="text-muted">Data can be represented on a radial bar chart in the various formats such as multiple radial bar charts, radial bar with an image, and even in semi-circular gauge forms
+              <div class="row">
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <div id="radialbar"></div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <div id="multiRadialbar"></div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <div id="customAngle"></div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <div id="gradientRadial"></div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <div id="strokeRadial"></div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->
+                <div class="col-md-4 my-4">
+                  <div class="card shadow">
+                    <div class="card-body text-center">
+                      <div id="semiRadial"></div>
+                    </div> <!-- / .card-body -->
+                  </div> <!-- / .card -->
+                </div> <!-- /. col -->               
+
+              </div> <!-- end section -->
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
         </div> <!-- .container-fluid -->
-        <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="list-group list-group-flush my-n3">
-                            <div class="list-group-item bg-transparent">
-                                <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <span class="fe fe-box fe-24"></span>
-                                    </div>
-                                    <div class="col">
-                                        <small><strong>Package has uploaded successfull</strong></small>
-                                        <div class="my-0 text-muted small">Package is zipped and uploaded</div>
-                                        <small class="badge badge-pill badge-light text-muted">1m ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item bg-transparent">
-                                <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <span class="fe fe-download fe-24"></span>
-                                    </div>
-                                    <div class="col">
-                                        <small><strong>Widgets are updated successfull</strong></small>
-                                        <div class="my-0 text-muted small">Just create new layout Index, form, table
-                                        </div>
-                                        <small class="badge badge-pill badge-light text-muted">2m ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-item bg-transparent">
-                                <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <span class="fe fe-inbox fe-24"></span>
-                                    </div>
-                                    <div class="col">
-                                        <small><strong>Notifications have been sent</strong></small>
-                                        <div class="my-0 text-muted small">Fusce dapibus, tellus ac cursus commodo</div>
-                                        <small class="badge badge-pill badge-light text-muted">30m ago</small>
-                                    </div>
-                                </div> <!-- / .row -->
-                            </div>
-                            <div class="list-group-item bg-transparent">
-                                <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <span class="fe fe-link fe-24"></span>
-                                    </div>
-                                    <div class="col">
-                                        <small><strong>Link was attached to menu</strong></small>
-                                        <div class="my-0 text-muted small">New layout has been attached to the menu
-                                        </div>
-                                        <small class="badge badge-pill badge-light text-muted">1h ago</small>
-                                    </div>
-                                </div>
-                            </div> <!-- / .row -->
-                        </div> <!-- / .list-group -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog"
-             aria-labelledby="defaultModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body px-5">
-                        <div class="row align-items-center">
-                            <div class="col-6 text-center">
-                                <div class="squircle bg-success justify-content-center">
-                                    <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Control area</p>
-                            </div>
-                            <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                    <i class="fe fe-activity fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Activity</p>
-                            </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                    <i class="fe fe-droplet fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Droplet</p>
-                            </div>
-                            <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                    <i class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Upload</p>
-                            </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                    <i class="fe fe-users fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Users</p>
-                            </div>
-                            <div class="col-6 text-center">
-                                <div class="squircle bg-primary justify-content-center">
-                                    <i class="fe fe-settings fe-32 align-self-center text-white"></i>
-                                </div>
-                                <p>Settings</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main> <!-- main -->
-</div> <!-- .wrapper -->
+	</main>
+	</div>
+	
 
-<script>
+	
+   <script src="${ pageContext.request.contextPath }/resources/assets/js/popper.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/moment.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/bootstrap.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/simplebar.min.js"></script>
+    <script src='${ pageContext.request.contextPath }/resources/assets/js/daterangepicker.js'></script>
+    <script src='${ pageContext.request.contextPath }/resources/assets/js/jquery.stickOnScroll.js'></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/tinycolor-min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/config.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/d3.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/topojson.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/datamaps.all.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/datamaps-zoomto.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/datamaps.custom.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/Chart.min.js"></script>
+    <script>
+      /* defind global options */
+      Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+      Chart.defaults.global.defaultFontColor = colors.mutedColor;
+    </script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/gauge.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/jquery.sparkline.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/apexcharts.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/apexcharts.custom.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/apps.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-    $('.time-input').timepicker(
-        {
-            'scrollDefault': 'now',
-            'zindex': '9999' /* fix modal open */
-        });
-    /** date range picker */
-    if ($('.datetimes').length) {
-        $('.datetimes').daterangepicker(
-            {
-                timePicker: true,
-                startDate: moment().startOf('hour'),
-                endDate: moment().startOf('hour').add(32, 'hour'),
-                locale:
-                    {
-                        format: 'M/DD hh:mm A'
-                    }
-            });
-    }
-    var start = moment().subtract(29, 'days');
-    var end = moment();
-
-    function cb(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-    }
-
-    $('#reportrange').daterangepicker(
-        {
-            startDate: start,
-            endDate: end,
-            ranges:
-                {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                }
-        }, cb);
-    cb(start, end);
-    $('.input-placeholder').mask("00/00/0000",
-        {
-            placeholder: "__/__/____"
-        });
-    $('.input-zip').mask('00000-000',
-        {
-            placeholder: "____-___"
-        });
-    $('.input-money').mask("#.##0,00",
-        {
-            reverse: true
-        });
-    $('.input-phoneus').mask('(000) 000-0000');
-    $('.input-mixed').mask('AAA 000-S0S');
-    $('.input-ip').mask('0ZZ.0ZZ.0ZZ.0ZZ',
-        {
-            translation:
-                {
-                    'Z':
-                        {
-                            pattern: /[0-9]/,
-                            optional: true
-                        }
-                },
-            placeholder: "___.___.___.___"
-        });
-    // editor
-    var editor = document.getElementById('editor');
-    if (editor) {
-        var toolbarOptions = [
-            [
-                {
-                    'font': []
-                }],
-            [
-                {
-                    'header': [1, 2, 3, 4, 5, 6, false]
-                }],
-            ['bold', 'italic', 'underline', 'strike'],
-            ['blockquote', 'code-block'],
-            [
-                {
-                    'header': 1
-                },
-                {
-                    'header': 2
-                }],
-            [
-                {
-                    'list': 'ordered'
-                },
-                {
-                    'list': 'bullet'
-                }],
-            [
-                {
-                    'script': 'sub'
-                },
-                {
-                    'script': 'super'
-                }],
-            [
-                {
-                    'indent': '-1'
-                },
-                {
-                    'indent': '+1'
-                }], // outdent/indent
-            [
-                {
-                    'direction': 'rtl'
-                }], // text direction
-            [
-                {
-                    'color': []
-                },
-                {
-                    'background': []
-                }], // dropdown with defaults from theme
-            [
-                {
-                    'align': []
-                }],
-            ['clean'] // remove formatting button
-        ];
-        var quill = new Quill(editor,
-            {
-                modules:
-                    {
-                        toolbar: toolbarOptions
-                    },
-                theme: 'snow'
-            });
-    }
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
-<script>
-    var uptarg = document.getElementById('drag-drop-area');
-    if (uptarg) {
-        var uppy = Uppy.Core().use(Uppy.Dashboard,
-            {
-                inline: true,
-                target: uptarg,
-                proudlyDisplayPoweredByUppy: false,
-                theme: 'dark',
-                width: 770,
-                height: 210,
-                plugins: ['Webcam']
-            }).use(Uppy.Tus,
-            {
-                endpoint: 'https://master.tus.io/files/'
-            });
-        uppy.on('complete', (result) => {
-            console.log('Upload complete! We’ve uploaded these files:', result.successful)
-        });
-    }
-</script>
-<!-- ======= Footer ======= -->
-<jsp:include page="/WEB-INF/views/admin/include/common-js.jsp"/>
-<!-- End Footer -->
-</body>
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-56159088-1');
+    </script>
+  </body>
 </html>

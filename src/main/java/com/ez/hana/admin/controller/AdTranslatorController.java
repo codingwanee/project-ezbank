@@ -44,6 +44,20 @@ public class AdTranslatorController {
 		return mav;
 	}
 	
+	// 등록된 통역사 목록 반환
+	@GetMapping("/active")
+	public ModelAndView translatorActiveList() {
+		ModelAndView mav = new ModelAndView("/admin/translator/activeList");
+		List<TranslatorVO> translatorList = adTranslatorService.getActiveTranslatorList();
+		mav.addObject("translatorList", translatorList);
+		/*
+		for(TranslatorVO vo : translatorList) {
+			System.out.println(vo.toString());
+		}
+		 */
+		return mav;
+	}
+	
 	
 	@RequestMapping("/excel")
 	public void excelDown(HttpServletResponse response) throws Exception {

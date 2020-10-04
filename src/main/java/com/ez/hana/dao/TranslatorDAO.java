@@ -24,4 +24,10 @@ public interface TranslatorDAO {
 	  * @return translatorVO
 	  */
 	 public TranslatorVO selectOne(int tid);
+	 
+	 /**
+	  * 활동중인 통역사 조회
+	  * @return translatorList
+	  */
+	 public List<TranslatorVO> selectByStatus();
 }

@@ -42,9 +42,9 @@
 								<div class="card-body">
 									<div class="container">
 										<div class="row d-flex justify-content-center">
-											<div class="col-sm-8">
+											<div class="col-sm-10">
 												<div
-													class="row col-lg-12 align-items-center justify-content-center ">
+													class="row col-lg-12 align-items-center justify-content-center">
 													<div class="section-title" data-aos="fade-up">
 														<h2>${reservVO.member}님의 예약신청이 성공적으로 완료되었습니다.</h2>
 														<p></p>

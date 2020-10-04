@@ -19,7 +19,7 @@
 	
 	<!-- 지점검색 -->
 	<select id="selectSome" parameterType="String" resultType="branchVO" resultMap="branchMap" >
-		SELECT *
+		SELECT BID, NAME_KO, NAME_EN, ADDR_KO_OLD, ADDR_KO_NEW, ADDR_EN, TEL, FAX, LOC, TO_CHAR(SYSDATE, 'YY-MM-DD') AS REG_DATE
 		FROM TB_BRANCH
 		WHERE NAME_KO LIKE '%' ||  #{keyword} || '%' OR NAME_EN LIKE '%' ||  #{keyword} || '%'
 		OR ADDR_KO_OLD LIKE '%' ||  #{keyword} || '%' OR ADDR_KO_NEW LIKE '%' ||  #{keyword} || '%' OR ADDR_EN LIKE '%' ||  #{keyword} || '%'
@@ -34,8 +34,8 @@
 		
 	<!-- 지점등록 -->
 	<insert id="insert" parameterType="branchVO">	 	
-		INSERT INTO TB_BRANCH (BID, NAME_KO, NAME_EN, ADDR_KO_OLD, ADDR_KO_NEW, ADDR_EN, TEL, LOC, REG_DATE)
-		VALUES(#{bid} , #{nameKo}, #{nameEn}, #{addrKoOld}, #{addrKoNew}, #{addrEn}, #{tel}, #{loc}, SYSDATE)		 	
+		INSERT INTO TB_BRANCH (BID, NAME_KO, NAME_EN, ADDR_KO_OLD, ADDR_KO_NEW, ADDR_EN, TEL, FAX, LOC, REG_DATE)
+		VALUES(#{bid} , #{nameKo}, #{nameEn}, #{addrKoOld}, #{addrKoNew}, #{addrEn}, #{tel}, #{fax}, #{loc}, TO_CHAR(SYSDATE, 'YY-MM-DD'))		 	
 	</insert>
 	
 	<!-- 지점삭제 -->

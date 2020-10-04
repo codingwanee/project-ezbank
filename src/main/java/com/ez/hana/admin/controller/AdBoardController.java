@@ -27,6 +27,16 @@ public class AdBoardController {
 
 		return mav;
 	}
+
+	//전체글 조회
+	@GetMapping("/hidden")
+	public ModelAndView getBoardHiddenList() {
+		ModelAndView mav = new ModelAndView("admin/board/hidden");
+		List<BoardVO> list = adBoardService.getBoardHiddenList();
+		mav.addObject("hiddenlist", list);
+		
+		return mav;
+	}
 	
 	
 }

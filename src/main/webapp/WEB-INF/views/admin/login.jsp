@@ -18,14 +18,13 @@
 </head>
 <body>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3 col-md-2"></div>
+	<div class="container justify-content-center align-items-center mt-5">
+		<div class="row justify-content-center align-items-center mt-5">
 			<div class="col-lg-6 col-md-8 login-box">
 				<div class="col-lg-12 login-title mt-5">
 					HanaEZ-UP<br>ADMIN PANEL</div>
-				<div class="col-lg-12 login-form">
-					<div class="col-lg-12 login-form">
+				<div class="col-lg-12 login-form justify-content-center align-items-center">
+					<div class="col-lg-12 login-form justify-content-center align-items-center">
 						<form action="${ pageContext.request.contextPath }/admin/login"
 							method="post" name="login">							
 
@@ -35,19 +34,18 @@
 							<div class="form-group">
 								<input type="password" class="form-control hanaUL" name="password" placeholder="비밀번호">
 							</div>
-							<div class="col-lg-12 justify-content-center align-items-center">
-								<div class="col-lg-12 login-button align-items-center">
-									<button type="submit" class="btn btn-login hanaUL">로그인</button>
+							<div class="row justify-content-center align-items-center">
+								<div class="login-button">
+									<button type="submit" style="width: 150px"class="btn btn-login hanaUL">로그인</button>
 								</div>
 							</div>
 						</form>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-2"></div>
 			</div>
 		</div>
 		<div class="row justify-content-center align-items-center mt-2">
-		<img src="${ pageContext.request.contextPath }/resources/images/logo/login-copyright.png">	
+			<img src="${ pageContext.request.contextPath }/resources/images/logo/login-copyright.png">	
 		</div>
 	</div>
 

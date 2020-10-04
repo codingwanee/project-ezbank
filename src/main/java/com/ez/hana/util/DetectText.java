@@ -21,7 +21,7 @@ public class DetectText {
   public static String detectText() throws IOException {
 //    String filePath = "path/to/your/image/file.jpg";
 	  
-    String filePath = "D:/fileStorage/regcard.jpg";
+    String filePath = "D:/fileStorage/regcard1.jpg";
     String detectedStr = detectText(filePath);
     
     return detectedStr;

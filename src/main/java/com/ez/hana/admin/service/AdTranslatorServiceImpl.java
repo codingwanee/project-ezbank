@@ -28,4 +28,10 @@ public class AdTranslatorServiceImpl implements AdTranslatorService {
 		return translatorVO;
 	}
 	
+	// 활동중인 통역사 조회
+	@Override
+	public List<TranslatorVO> getActiveTranslatorList() {
+		List<TranslatorVO> translatorList = translatorDAO.selectByStatus();
+		return translatorList;
+	}
 }

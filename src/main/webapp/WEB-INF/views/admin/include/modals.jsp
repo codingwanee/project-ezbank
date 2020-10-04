@@ -17,7 +17,7 @@
 					<div class="list-group-item bg-transparent">
 						<div class="row align-items-center">
 							<div class="col-auto">
-								<span class="fe fe-layers fe-24"></span>
+								<span class="fe fe-shield fe-24"></span>
 							</div>
 							<div class="col">
 								<small><strong>새로 접수된 비대면 인증 신청내역</strong></small>
@@ -25,27 +25,30 @@
 									미처리 건수가 <span id="certify-count">${count}</span>건 있습니다.
 								</div>
 								<a
-									href="${ pageContext.request.contextPath }/admin/certify/list"><small
-									class="badge badge-pill badge-light text-muted">바로가기</small></a>
+									href="${ pageContext.request.contextPath }/admin/certify/list">
+									<small
+									class="badge badge-pill badge-success text-muted">바로가기</small></a>
 							</div>
 						</div>
 					</div>
 					<div class="list-group-item bg-transparent">
 						<div class="row align-items-center">
 							<div class="col-auto">
-								<span class="fe fe-file fe-24"></span>
+								<span class="fe fe-user fe-24"></span>
 							</div>
 							<div class="col">
 								<small><strong>새로 접수된 통역사 신청내역</strong></small>
 								<div class="my-0 text-muted small">
-									미처리 건수가 <span id="certify-count">${count}</span>건 있습니다.
+									미처리 건수가 <span id="certify-count">8</span>건 있습니다.
 								</div>
+								<a
+									href="${ pageContext.request.contextPath }/admin/certify/list"><small
+									class="badge badge-pill badge-success text-muted">바로가기</small></a>
 							</div>
-							<small class="badge badge-pill badge-light text-muted">바로가기</small>
 						</div>
 					</div>
 				</div>
-				<div class="list-group-item bg-transparent">
+<!-- 				<div class="list-group-item bg-transparent">
 					<div class="row align-items-center">
 						<div class="col-auto">
 							<span class="fe fe-layout fe-24"></span>
@@ -58,7 +61,7 @@
 								ago</small>
 						</div>
 					</div>
-					<!-- / .row -->
+					/ .row
 				</div>
 				<div class="list-group-item bg-transparent">
 					<div class="row align-items-center">
@@ -73,7 +76,7 @@
 								ago</small>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- / .row -->
 			</div>
 			<!-- / .list-group -->

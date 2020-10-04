@@ -12,4 +12,10 @@ public interface AdBoardService {
 	 */
 	public List<BoardVO> getBoardList();
 
+	/**
+	 * 숨긴 글 조회
+	 * @return list 게시판 글 목록
+	 */
+	public List<BoardVO> getBoardHiddenList();
+
 }

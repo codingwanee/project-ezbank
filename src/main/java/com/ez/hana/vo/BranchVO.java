@@ -9,6 +9,8 @@ public class BranchVO {
 	private String addrKoNew;
 	private String addrEn;
 	private String tel;
+	private String fax;
+	private String post;
 	private String loc;
 	private String regDate;
 
@@ -68,13 +70,29 @@ public class BranchVO {
 		this.tel = tel;
 	}
 
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
+	public String getPost() {
+		return post;
+	}
+
+	public void setPost(String post) {
+		this.post = post;
+	}
+
 	public String getLoc() {
 		return loc;
 	}
 
 	public void setLoc(String loc) {
 		this.loc = loc;
-	}	
+	}
 
 	public String getRegDate() {
 		return regDate;
@@ -87,9 +105,8 @@ public class BranchVO {
 	@Override
 	public String toString() {
 		return "BranchVO [bid=" + bid + ", nameKo=" + nameKo + ", nameEn=" + nameEn + ", addrKoOld=" + addrKoOld
-				+ ", addrKoNew=" + addrKoNew + ", addrEn=" + addrEn + ", tel=" + tel +  ", loc=" + loc
-				+ "]";
+				+ ", addrKoNew=" + addrKoNew + ", addrEn=" + addrEn + ", tel=" + tel + ", fax=" + fax + ", post=" + post
+				+ ", loc=" + loc + ", regDate=" + regDate + "]";
 	}
 
-	
 }

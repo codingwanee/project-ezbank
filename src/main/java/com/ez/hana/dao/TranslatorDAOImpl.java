@@ -34,5 +34,12 @@ public class TranslatorDAOImpl implements TranslatorDAO {
 		TranslatorVO translatorVO = sqlSession.selectOne("translatorMapper.selectOne", tid);
 		return translatorVO;
 	}
+	
+	// 활동중인 통역사 조회
+	@Override
+	public List<TranslatorVO> selectByStatus() {
+		List<TranslatorVO> translatorList = sqlSession.selectList("translatorMapper.selectByStatus");
+		return translatorList;
+	}
 
 }

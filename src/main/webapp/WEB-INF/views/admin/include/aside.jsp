@@ -88,76 +88,36 @@
 			<span>관리목록</span>
 		</p>
 		<ul class="navbar-nav flex-fill w-100 mb-2">
-			<li class="nav-item dropdown"><a href="#members"
-				data-toggle="collapse" aria-expanded="false"
-				class="dropdown-toggle nav-link"> <i class="fe fe-user fe-16"></i>
-					<span class="ml-3 item-text">통역사</span>
-			</a>
-				<ul class="collapse list-unstyled pl-4 w-100" id="members">
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/translator">
-						<span class="ml-1 item-text">통역사 신청목록</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/translator">
-						<span class="ml-1 item-text">활동중인 통역사 목록</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/board/list">
-						<span class="ml-1 item-text">정보교류 게시판</span></a></li>
-				</ul></li>
-			<li class="nav-item dropdown"><a href="#branch"
-				data-toggle="collapse" aria-expanded="false"
-				class="dropdown-toggle nav-link"> <i class="fe fe-layers fe-16"></i>
-					<span class="ml-3 item-text">지점</span>
-			</a>
-				<ul class="collapse list-unstyled pl-4 w-100" id="branch">
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/branch/list"><span
-							class="ml-1 item-text">지점목록</span></a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/branch/register"><span
-							class="ml-1 item-text">지점등록</span></a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/branch/reservations"><span
-							class="ml-1 item-text">예약현황</span></a></li>
-				</ul></li>
-			<li class="nav-item dropdown"><a href="#account"
-				data-toggle="collapse" aria-expanded="false"
-				class="dropdown-toggle nav-link"> <i
-					class="fe fe-credit-card fe-16"></i> <span class="ml-3 item-text">계좌</span>
-			</a>
-				<ul class="collapse list-unstyled pl-4 w-100" id="account">
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/branch/list"><span
-							class="ml-1 item-text">계좌목록</span></a></li>
-				</ul></li>
-			
-			<li class="nav-item dropdown"><a href="#certify"
-				data-toggle="collapse" aria-expanded="false"
-				class="dropdown-toggle nav-link"> <i class="fe fe-shield fe-16"></i>
-					<span class="ml-3 item-text">비대면 인증</span>
-			</a>
-				<ul class="collapse list-unstyled pl-4 w-100" id="certify">
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/certify/list"><span
-							class="ml-1 item-text">인증신청 목록</span></a></li>
-				</ul></li>
-			<li class="nav-item dropdown"><a href="#reservation"
-				data-toggle="collapse" aria-expanded="false"
-				class="dropdown-toggle nav-link"> <i class="fe fe-home fe-16"></i>
-					<span class="ml-3 item-text">지점예약</span>
-			</a>
-				<ul class="collapse list-unstyled pl-4 w-100" id="reservation">
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/reserv/list"><span
-							class="ml-1 item-text">예약현황</span></a></li>
-				</ul></li>
-				
-<%-- 			<li class="nav-item dropdown"><a href="${ pageContext.request.contextPath }/admin/sample"
-				data-toggle="collapse" aria-expanded="false"
-			><span class="ml-3 item-text">test</span></a></li> --%>
-		</ul>
+			<li class="nav-item w-100">
+              <a class="nav-link" href="${ pageContext.request.contextPath }/admin/certify/list">
+                <i class="fe fe-shield fe-16"></i>
+                <span class="ml-3 item-text">비대면 인증신청</span>
+              </a>
+            </li>
+			<li class="nav-item w-100">
+			<a class="nav-link" href="${ pageContext.request.contextPath }/admin/branch/list">
+					<i class="fe fe-layers fe-16"></i>
+					<span class="ml-3 item-text">지점관리</span></a>
+			</li>		
+			<li class="nav-item w-100">
+				<a class="nav-link" href="${ pageContext.request.contextPath }/admin/translator">
+					<i class="fe fe-user fe-16"></i>
+					<span class="ml-3 item-text">통역사</span></a>
+			<li class="nav-item w-100">
+              <a class="nav-link" href="${ pageContext.request.contextPath }/admin/board/list">
+                <i class="fe fe-layout fe-16"></i>
+                <span class="ml-3 item-text">금융상담 게시판</span>
+              </a>
+            </li>
+ 			<li class="nav-item w-100">
+              <a class="nav-link" href="${ pageContext.request.contextPath }/admin/reserv/list">
+                <i class="fe fe-home fe-16"></i>
+                <span class="ml-3 item-text">우리지점 예약현황</span>
+              </a>
+            </li> 
+			<li class="nav-item dropdown"><a href="${ pageContext.request.contextPath }/admin/sample">
+			<span class="ml-3 item-text">test</span></a></li>
+			</ul>
 		<div class="btn-box w-100 mt-4 mb-1">
 			<a href="${ pageContext.request.contextPath }/" target="_blank"
 				class="btn mb-2 btn-primary btn-lg btn-block"> <i

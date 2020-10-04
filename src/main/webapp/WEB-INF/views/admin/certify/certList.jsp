@@ -19,6 +19,10 @@ pageEncoding="UTF-8"%>
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10">
+<%--                         <div class="row col-sm-12 justify-content-center">
+                        					<img class="w-50"
+										src="${ pageContext.request.contextPath }/resources/images/ad_certify.png">
+                        </div> --%>
                     <div class="row align-items-center my-4">
                         <div class="col">
                             <h2 class="page-title">비대면 인증신청 목록</h2>
@@ -30,7 +34,7 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                     <!-- .card-deck -->
-                    <div class="row align-items-center mb-3 border-bottom no-gutters">
+                    <div class="row align-items-center mb-3 border-bottom no-gutters">                    
                         <div class="col">
                             <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
                                 <li class="nav-item"><a class="nav-link active"
@@ -56,40 +60,42 @@ pageEncoding="UTF-8"%>
                     <table class="table table-borderless table-striped">
                         <thead>
                         <tr>
-                            <th></th>
-                            <th class="w-50">Name</th>
-                            <th>Owner</th>
-                            <th>Last Update</th>
-                            <th></th>
+                            <th>처리상태</th>
+                            <th>신청번호</th>
+                            <th style="width:25%">이름</th>
+                            <th>국적</th>
+                            <th>신청일자</th>
+                            <th>관리</th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${ certList }" var="certVO" varStatus="loop">
                             <tr>
                                 <td class="text-center">
-                                    <div class="circle circle-sm bg-light">
-                                        <span class="fe fe-folder fe-16 text-muted"></span>
-                                    </div>
                                     <c:choose>
                                         <c:when test="${certVO.status eq '0'}">
                                             <span class="dot dot-md bg-success mr-1"></span>
+                                            <span class="badge badge-su">처리대기</span>
                                         </c:when>
                                         <c:when test="${certVO.status eq '1'}">
                                             <span class="dot dot-md bg-secondary mr-1"></span>
+                                            <span class="badge badge-light text-muted">승인완료</span>
                                         </c:when>
                                         <c:when test="${certVO.status eq '2'}">
                                             <span class="dot dot-md bg-warning mr-1"></span>
+                                            <span class="badge badge-dark">거절</span>
                                         </c:when>
                                         <c:otherwise>
                                             <span class="dot dot-md bg-warning mr-1"></span>
+                                            <span class="badge badge-light text-muted">Folder</span>
                                         </c:otherwise>
                                     </c:choose>
                                 </td>
-                                <th scope="row">
+                                <td class="text-muted">${certVO.certId}</td>
+                                <td scope="row">
                                 <a href="${ pageContext.request.contextPath }/admin/certify/detail/${certVO.certId}">
-                                ${certVO.applicantNm}</a><br/>
-                                <span class="badge badge-light text-muted">Folder</span>
-                                </th>
+                                ${certVO.applicantNm}</a><br/>                                
+                                </td>
                                 <td class="text-muted">${certVO.applicantNtnKo}</td>
                                 <td class="text-muted">${certVO.regDate}</td>
                                 <td>
@@ -102,13 +108,13 @@ pageEncoding="UTF-8"%>
                                         </button>
                                         <div class="dropdown-menu m-2">
                                             <a class="dropdown-item" href="#"><i
-                                                    class="fe fe-chevrons-right fe-12 mr-4"></i>Move</a> <a
+                                                    class="fe fe-chevrons-right fe-12 mr-4"></i>처리완료</a> <a
                                                 class="dropdown-item" href="#"><i
                                                 class="fe fe-copy fe-12 mr-4"></i>Copy</a> <a
                                                 class="dropdown-item" href="#"><i
                                                 class="fe fe-edit-3 fe-12 mr-4"></i>Rename</a> <a
                                                 class="dropdown-item" href="#"><i
-                                                class="fe fe-delete fe-12 mr-4"></i>Delete</a> <a
+                                                class="fe fe-delete fe-12 mr-4"></i>삭제</a> <a
                                                 class="dropdown-item" href="#"><i
                                                 class="fe fe-share fe-12 mr-4"></i>Share</a> <a
                                                 class="dropdown-item" href="#"><i
@@ -120,74 +126,7 @@ pageEncoding="UTF-8"%>
                         </c:forEach>
                         </tbody>
                     </table>
-
-                    <!-- table -->
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <table class="table table-borderless table-hover">
-                                <thead>
-                                <tr>
-                                    <th>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="all2">
-                                            <label class="custom-control-label" for="all2"></label>
-                                        </div>
-                                    </th>
-                                    <th>ID</th>
-                                    <th>User</th>
-                                    <th>Company</th>
-                                    <th>Country</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                <c:forEach items="${ certList }" var="certVO" varStatus="loop">
-                                    <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="2474">
-                                                <label class="custom-control-label" for="2474"></label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar avatar-sm">
-                                                <img src="./assets/avatars/face-3.jpg" alt="..."
-                                                     class="avatar-img rounded-circle">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="mb-0 text-muted"><strong>${certVO.applicantNm}</strong></p>
-                                            <small class="mb-0 text-muted">2474</small>
-                                        </td>
-                                        <td>
-                                            <p class="mb-0 text-muted">Accumsan Consulting</p>
-                                            <small class="mb-0 text-muted">Ap #331-7123 Lobortis Avenue</small>
-                                        </td>
-                                        <td>
-                                            <p class="mb-0 text-muted"><a href="#" class="text-muted">(958) 421-0798</a>
-                                            </p>
-                                            <small class="mb-0 text-muted">Nigeria</small>
-                                        </td>
-                                        <td class="text-muted">13/09/2020</td>
-                                        <td>
-                                            <button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="text-muted sr-only">Action</span>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#">Edit</a>
-                                                <a class="dropdown-item" href="#">Remove</a>
-                                                <a class="dropdown-item" href="#">Assign</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <!-- table -->                  
                 </div>
                 <!-- .row -->
             </div>

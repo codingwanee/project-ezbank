@@ -11,7 +11,11 @@ public interface BoardDAO {
 	 * 게시판 목록 불러오기
 	 */
 	public List<BoardVO> selectAll();
-
+	
+	/**
+	 * 숨긴글 조회
+	 */
+	public List<BoardVO> selectAllHidden();
 	
 	/**
 	 * 상세글 조회

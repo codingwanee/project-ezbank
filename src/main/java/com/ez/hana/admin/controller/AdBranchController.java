@@ -38,7 +38,7 @@ public class AdBranchController {
 		// System.out.println(branchVO.toString());
 		// System.out.println("register controller entered . . . ");
 		adBranchService.registerBranch(branchVO);	
-		return "redirect:admin/branch/list";
+		return "redirect:/admin/branch/list";
 	}
 	
 	

@@ -21,6 +21,13 @@ public class BoardDAOImpl implements BoardDAO {
 		List<BoardVO> list = sqlSession.selectList("boardMapper.selectAll");
 		return list;
 	}
+	
+	// 숨긴글 조회
+	@Override
+	public List<BoardVO> selectAllHidden() {
+		List<BoardVO> list = sqlSession.selectList("boardMapper.selectAllHidden");
+		return list;
+	}
 
 	// 상세조회
 	@Override
