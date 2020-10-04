@@ -3,10 +3,11 @@ package com.ez.hana.vo;
 public class MemberVO {
 
 	String id;
+	String mid;
 	String name;
-	String pwd;
+	String password;
 	String nationality;
-	String idNum;
+	String socialNum;
 	String birthday;
 	String gender;
 	String postNum;
@@ -17,6 +18,7 @@ public class MemberVO {
 	String point;
 	String addr1;
 	String addr2;
+	String otpKey;
 	String lang;
 
 	public String getId() {
@@ -27,6 +29,14 @@ public class MemberVO {
 		this.id = id;
 	}
 
+	public String getMid() {
+		return mid;
+	}
+
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -35,12 +45,12 @@ public class MemberVO {
 		this.name = name;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getNationality() {
@@ -51,12 +61,12 @@ public class MemberVO {
 		this.nationality = nationality;
 	}
 
-	public String getIdNum() {
-		return idNum;
+	public String getSocialNum() {
+		return socialNum;
 	}
 
-	public void setIdNum(String idNum) {
-		this.idNum = idNum;
+	public void setSocialNum(String socialNum) {
+		this.socialNum = socialNum;
 	}
 
 	public String getBirthday() {
@@ -139,12 +149,29 @@ public class MemberVO {
 		this.addr2 = addr2;
 	}
 
+	public String getOtpKey() {
+		return otpKey;
+	}
+
+	public void setOtpKey(String otpKey) {
+		this.otpKey = otpKey;
+	}
+
 	public String getLang() {
 		return lang;
 	}
 
 	public void setLang(String lang) {
 		this.lang = lang;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", mid=" + mid + ", name=" + name + ", password=" + password + ", nationality="
+				+ nationality + ", socialNum=" + socialNum + ", birthday=" + birthday + ", gender=" + gender
+				+ ", postNum=" + postNum + ", emailId=" + emailId + ", emailDomain=" + emailDomain + ", contact="
+				+ contact + ", type=" + type + ", point=" + point + ", addr1=" + addr1 + ", addr2=" + addr2
+				+ ", otpKey=" + otpKey + ", lang=" + lang + "]";
 	}
 
 }

@@ -33,6 +33,28 @@
 		WHERE CERTID = #{certId}
 	</select>
 	
+	
+	<!-- 해당 신청자의 지난 신청목록 -->
+	<select id="selectAllByApplicant" parameterType="String" resultType="certHistoryVO" resultMap="certHistoryMap" >
+		SELECT *
+		FROM TB_CERT_HISTORY
+		WHERE APPLICANT_ID = #{applicantId}
+	</select>
+	
+	<!-- 승인 또는 거절 처리 -->
+	<update id="updateStatus" parameterType="certHistoryVO">
+		UPDATE TB_CERT_HISTORY
+		SET STATUS = #{status} AND REASON = #{reason}
+		WHERE CERTID = #{certId}
+	</update>
+	
+	<!-- 미처리 건 알림 -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(STATUS)
+		FROM TB_CERT_HISTORY
+		WHERE STATUS = '0'
+	</select>
+	
 	<!-- certId에 대한 시퀀스 -->
 	<!-- (CONCAT('FFF', (LPAD(TO_CHAR(SEQ_CERT_HISTORY.NEXTVAL), 8, '0'))))	-->
 	<select id="selectSeq" resultType="int">
@@ -54,7 +76,8 @@
 	<insert id="insertFile" parameterType="certFileVO">
 		INSERT INTO TB_CERT_FILE
 		(SAVENAME, ORGINNAME, CERTID)
-		VALUES(#{saveName}, #{originName}, -1)
+		VALUES(#{saveName}, #{originName}, #{certId})
 	</insert>	
+
 
 </mapper>	

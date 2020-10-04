@@ -21,4 +21,13 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO mypage(MemberVO loginVO) {
 		return memberDAO.selectOne(loginVO);
 	}
+	
+	@Override
+	public Boolean checkIdDuplicated(String id) {
+		MemberVO memberVO = memberDAO.selectOneById(id);
+		if (memberVO == null) {
+			return false;
+		} 		
+		return true;
+	}
 }

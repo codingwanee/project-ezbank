@@ -1,7 +1,5 @@
 package com.ez.hana.dao;
 
-import org.springframework.web.servlet.ModelAndView;
-
 import com.ez.hana.vo.MemberVO;
 
 public interface MemberDAO {
@@ -15,13 +13,28 @@ public interface MemberDAO {
 	
 	/**
 	 * 회원가입
-	 * 
+	 * @param memberVO
 	 */
+	public void join(MemberVO memberVO);
 	
 	
 	/**
 	 * 회원 상세조회(마이페이지)
 	 */
 	public MemberVO selectOne(MemberVO loginVO);
+
+
+	/**
+	 * 아이디 중복조회
+	 * @param id
+	 * @return
+	 */
+	public MemberVO selectOneById(String id);
+
+	/**
+	 * 비대면 인증상태 승인으로 변경
+	 * @param string
+	 */
+	public void updateCertStatus(MemberVO memberVO);
 
 }

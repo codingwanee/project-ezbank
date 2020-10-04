@@ -26,6 +26,5 @@ public class AdBranchServiceImpl implements AdBranchService {
 		branchDAO.insert(branchVO);		
 	}
 
-
-
+	
 }

@@ -11,6 +11,7 @@ public class CertHistoryVO {
 	String applicantNm;
 	String applicantNtnKo;
 	String applicantNtnEn;
+	String reason;
 	String fileName;
 	String status;
 	String regDate;
@@ -54,6 +55,14 @@ public class CertHistoryVO {
 	public void setApplicantNtnEn(String applicantNtnEn) {
 		this.applicantNtnEn = applicantNtnEn;
 	}
+	
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
 
 	public String getFileName() {
 		return fileName;
@@ -82,8 +91,8 @@ public class CertHistoryVO {
 	@Override
 	public String toString() {
 		return "CertHistoryVO [certId=" + certId + ", applicantId=" + applicantId + ", applicantNm=" + applicantNm
-				+ ", applicantNtnKo=" + applicantNtnKo + ", applicantNtnEn=" + applicantNtnEn + ", fileName=" + fileName
-				+ ", status=" + status + ", regDate=" + regDate + "]";
+				+ ", applicantNtnKo=" + applicantNtnKo + ", applicantNtnEn=" + applicantNtnEn + ", reason=" + reason
+				+ ", fileName=" + fileName + ", status=" + status + ", regDate=" + regDate + "]";
 	}
 
 }

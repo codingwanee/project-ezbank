@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ez.hana.admin.service.AdEmployeeService;
 import com.ez.hana.vo.EmployeeVO;
+import com.ez.hana.vo.MemberVO;
 
 @SessionAttributes({"employeeVO"})
 @RequestMapping("/admin")
@@ -22,7 +23,14 @@ public class AdGeneralController {
 	AdEmployeeService employeeService;
 
 	@GetMapping
-	public String adminMainPage() {
+	public String adminMainPage(HttpSession session) {
+		
+		EmployeeVO employeeVO = (EmployeeVO) session.getAttribute("employeeVO");
+		
+		if(employeeVO == null) {			
+			return "admin/login";
+		}
+		
 		return "admin/main";
 	}	
 	
@@ -33,7 +41,7 @@ public class AdGeneralController {
 	
 	@PostMapping("/login")
 	public ModelAndView empLogin(EmployeeVO employeeVO, HttpSession session) {
-		EmployeeVO empVO = employeeService.login(employeeVO);	
+		EmployeeVO empVO = employeeService.login(employeeVO);
 		ModelAndView mav = new ModelAndView();
 		
 		// 로그인 실패
@@ -49,5 +57,10 @@ public class AdGeneralController {
 		return mav;
 	}
 	
+	
+	@GetMapping("/sample")
+	public String sample() {
+		return "admin/sample";
+	}
 
 }

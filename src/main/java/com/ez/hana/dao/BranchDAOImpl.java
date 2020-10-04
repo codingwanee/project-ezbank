@@ -12,11 +12,12 @@ import com.ez.hana.vo.BranchVO;
 public class BranchDAOImpl implements BranchDAO {
 	
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	SqlSessionTemplate sqlSession;
 	
 	/**
 	 * 지점 검색하는 기능
 	 */
+	@Override
 	public List<BranchVO> selectByKeyword(String keyword) {		
 		List<BranchVO> branchList = sqlSession.selectList("branchMapper.selectSome", keyword);
 		return branchList;
@@ -25,6 +26,7 @@ public class BranchDAOImpl implements BranchDAO {
 	/**
 	 * 지점 등록
 	 */
+	@Override
 	public void insert(BranchVO branchVO) {
 		sqlSession.insert("branchMapper.insert", branchVO);
 	}
@@ -32,13 +34,20 @@ public class BranchDAOImpl implements BranchDAO {
 	/**
 	 * 지점 전체목록 조회
 	 */
+	@Override
 	public List<BranchVO> selectAll() {
 		List<BranchVO> branchList = sqlSession.selectList("branchMapper.selectAll");
-
-		// Iterator<BranchVO> it = branchList.iterator();
-		// while (it.hasNext()) { System.out.println(it.next()); }
-		// System.out.println("branchList : " + branchList.iterator().toString());
-
 		return branchList;
 	}
+	
+	/**
+	 * bid로 지점정보 조회
+	 */
+	@Override
+	public BranchVO selectOne(String bid) {
+		BranchVO branchVO = sqlSession.selectOne("branchMapper.selectOne", bid);
+		return branchVO;
+	}
+	
+	
 }

@@ -5,12 +5,12 @@
 <html>
 <head>
 <!-- ======= Head ======= -->
-<jsp:include page="/WEB-INF/views/admin/include/head.jsp" />
+<jsp:include page="/WEB-INF/views/admin/include/common-css.jsp" />
 <!-- End head -->
 </head>
 <body class="vertical  light  ">
 	<div class="wrapper">
-
+	
 		<!-- ======= Aside Menubar ======= -->
 		<jsp:include page="/WEB-INF/views/admin/include/aside.jsp" />
 		<!-- Aside Menubar -->
@@ -24,11 +24,11 @@
 								<h2 class="h3 mb-0 page-title">외국인 특화지점 목록</h2>
 							</div>
 							<div class="col-auto">
+								<a href="${pageContext.request.contextPath}/admin/branch/register"><button type="button" class="btn btn-primary">
+									<span class="fe fe-plus fe-12 mr-2"></span>신규등록
+								</button></a>
 								<button type="button" class="btn btn-secondary">
 									<span class="fe fe-trash fe-12 mr-2"></span>삭제
-								</button>
-								<button type="button" class="btn btn-primary">
-									<span class="fe fe-filter fe-12 mr-2"></span>신규등록
 								</button>
 							</div>
 						</div>
@@ -54,7 +54,6 @@
 										</tr>
 									</thead>
 									<tbody>
-
 										<c:forEach items="${ branchList }" var="branchVO"
 											varStatus="loop">
 											<tr>
@@ -82,7 +81,7 @@
 												<td>
 													<p class="mb-0 text-muted">
 														<a href="#" class="text-muted">${ branchVO.tel }</a>
-													</p> <small class="mb-0 text-muted">${ branchVO.loc }</small>
+<%-- 													</p> <small class="mb-0 text-muted">${ branchVO.fax }</small> --%>
 												</td>
 												<td class="text-muted">${ branchVO.regDate }</td>
 												<td><button
@@ -106,8 +105,8 @@
 							<ul class="pagination justify-content-end mb-0">
 								<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
+<!-- 								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li> -->
 								<li class="page-item"><a class="page-link" href="#">Next</a></li>
 							</ul>
 						</nav>
@@ -123,7 +122,7 @@
 	<jsp:include page="/WEB-INF/views/admin/include/modals.jsp" />
 	<!-- End Footer -->
 	<!-- ======= Footer ======= -->
-	<jsp:include page="/WEB-INF/views/admin/include/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/admin/include/common-js.jsp" />
 	<!-- End Footer -->
 </body>
 </html>

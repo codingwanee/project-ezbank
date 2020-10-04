@@ -35,7 +35,7 @@
             </div>
         </div>
     </section><!-- End Login Section -->
-    </main><!-- End #main --><br><br><br><br>
+   <br><br><br><br>
 </div>
 <!-- footer -->
 

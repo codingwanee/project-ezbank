@@ -14,7 +14,9 @@
     http://www.springframework.org/schema/util/spring-util-4.0.xsd" >
     
     <context:component-scan base-package="com.ez.hana" />
-    <util:properties id="property" location="classpath:config/properties/key.properties"></util:properties>
+    
+    <!-- 깃허브에 인증키 업로드는 피하기 위한 property 파일 -->
+    <util:properties id="property" location="classpath:hidden/key.properties"></util:properties>
     
     <!-- Annotation  -->
     <mvc:annotation-driven >
@@ -46,7 +48,7 @@
     	<property name="password" value="5555" />
     </bean>
     
-        <!-- sqlSessionFactory 객체 만들기 / setter 주입 -->
+    <!-- sqlSessionFactory 객체 만들기 / setter 주입 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<property name="dataSource" ref="dataSource" />
     	<property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml"/>
@@ -63,7 +65,26 @@
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/views/" suffix=".jsp" />
 	</mvc:view-resolvers>    
+    <mvc:resources mapping="/resources/**" location="/resources/" />
     
+    <!-- 로그인 interceptor -->
+   <bean class="com.ez.hana.interceptor.LoginInterceptor" id="loginInterceptor" />
+   <mvc:interceptors>
+      <mvc:interceptor>
+         <mvc:mapping path="/**/"/> <!-- depth가 어떻든 그 이하의 모든 파일 -->
+         <mvc:exclude-mapping path="/"/>
+         <mvc:exclude-mapping path="/fakelogin"/>
+         <mvc:exclude-mapping path="/admin/**"/>
+         <mvc:exclude-mapping path="/i18n/*"/>
+         <mvc:exclude-mapping path="/login"/>
+         <mvc:exclude-mapping path="/join"/>
+         <mvc:exclude-mapping path="/logout"/>
+         <mvc:exclude-mapping path="/board"/>
+         <mvc:exclude-mapping path="/resources/**"/> <!-- /* 는 바로 밑 , /**는 모든파일까지 통칭! -->
+         <ref bean="loginInterceptor" />
+      </mvc:interceptor>
+   </mvc:interceptors>
+   
     <!-- 다국어 설정 -->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 	    <property name="basenames" value="locale/messages"/>	         
@@ -85,7 +106,8 @@
     	<property name="maxUploadSize" value="5242880" /> 
     	<property name="maxInMemorySize" value="5242880" />
     </bean>
-<!--    <bean class="org.springframework.mock.web.MockServletContext"/>-->
+
+    <!-- <bean class="org.springframework.mock.web.MockServletContext"/> -->
     
     <!-- 사용자의 쿠키에 언어설정 저장
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" >    
@@ -96,4 +118,28 @@
 	</bean>
 	 -->
 	 
+	 <!-- 이메일 전송 관련 -->
+	 <!-- Gmail bean 설정 -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" /> <!-- gmail을 사용 -->
+        <property name="port" value="587" />
+        <property name="username" value="helpingcrewcenter@gmail.com" />
+        <property name="password" value="since2016" />
+        <property name="javaMailProperties">
+            <props>
+         	    <prop key="mail.smtp.auth">true</prop>
+	 	        <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>        
+    
+   <!-- 트랜잭션 처리 -->
+   <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+      <property name="dataSource" ref="dataSource"/>
+   </bean>
+ 
 </beans>

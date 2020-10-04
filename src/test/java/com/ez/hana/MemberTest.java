@@ -29,7 +29,7 @@ public class MemberTest {
 		
 		MemberVO member = new MemberVO();
 		member.setId("user");
-		member.setPwd("user");
+		member.setPassword("user");
 		
 		MemberVO loginVO = memberDAO.login(member);
 		

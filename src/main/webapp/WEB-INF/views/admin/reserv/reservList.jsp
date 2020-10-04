@@ -4,17 +4,22 @@
 <!doctype html>
 <html>
 <head>
+<title>HanaEZ UP Admin Side</title>
+
 <!-- ======= Head ======= -->
-<jsp:include page="/WEB-INF/views/admin/include/head.jsp" />
-<!-- End head -->
+<jsp:include page="/WEB-INF/views/admin/include/common-css.jsp" />
+
+<!-- Favicons -->
+<link href="${ pageContext.request.contextPath }/resources/assets/img/favicon.png" rel="icon">
+
 </head>
 <body class="vertical  light  ">
 	<div class="wrapper">
 
 		<!-- ======= Aside Menubar ======= -->
 		<jsp:include page="/WEB-INF/views/admin/include/aside.jsp" />
-		<!-- Aside Menubar -->
 
+		<!-- Aside Menubar -->
 		<main role="main" class="main-content">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
@@ -23,19 +28,53 @@
 							<div class="col">
 								<h2 class="h3 mb-0 page-title">지점 이용예약</h2>
 							</div>
-							<div class="col-auto">
-								<button type="button" class="btn btn-secondary">
-									<span class="fe fe-trash fe-12 mr-2"></span>삭제
-								</button>
-								<button type="button" class="btn btn-primary">
-									<span class="fe fe-filter fe-12 mr-2"></span>신규등록
-								</button>
+						</div>
+
+						<!-- Apex Radialbar Charts -->
+						<h2 class="h5" id="task-section">ApexCharts Radialbars</h2>
+						<p class="text-muted">Data can be represented on a radial bar
+							chart in the various formats such as multiple radial bar charts,
+							radial bar with an image, and even in semi-circular gauge forms
+						<div class="row">
+							<div class="col-md-4 my-4">
+								<div class="card shadow">
+									<div class="card-body text-center">
+										<div id="radialbar"></div>
+									</div>
+									<!-- / .card-body -->
+								</div>
+								<!-- / .card -->
 							</div>
+							<!-- /. col -->
+							<div class="col-md-4 my-4">
+								<div class="card shadow">
+									<div class="card-body text-center">
+										<div id="multiRadialbar"></div>
+									</div>
+									<!-- / .card-body -->
+								</div>
+								<!-- / .card -->
+							</div>
+							<!-- /. col -->
 						</div>
 						<!-- table -->
 						<div class="card shadow">
 							<div class="card-body">
-								<table class="table table-borderless table-hover">
+								<h5 class="mt-3 mb-5">
+									<script>
+										let today = new Date();
+
+										let year = today.getFullYear(); // 년도
+										let month = today.getMonth() + 1; // 월
+										let date = today.getDate(); // 날짜
+										let day = today.getDay(); // 요일
+
+										document.write(year + '/' + month + '/'
+												+ date)
+									</script>
+									일의 예약현황입니다.
+								</h5>
+								<table class="table table-hover">
 									<thead>
 										<tr>
 											<th>
@@ -45,46 +84,62 @@
 														for="all"></label>
 												</div>
 											</th>
-											<th>예약일자</th>
-											<th>국적</th>
 											<th>예약시간</th>
-											<th>예약자</th>
-											<th>업무항목</th>
-											<th>처리상태</th>
+											<th style="width: 40%">예약자</th>
+											<th>예약업무</th>
+											<th>상태</th>
+											<th>처리</th>
 										</tr>
 									</thead>
 									<tbody>
-
 										<c:forEach items="${ reservationList }" var="reserveVO"
 											varStatus="loop">
 											<tr>
 												<td>
 													<div class="custom-control custom-checkbox">
 														<input type="checkbox" class="custom-control-input"
-															id="${ reserveVO.resId }"> <label class="custom-control-label"
-															for="${ reserveVO.resId }"></label>
+															id="${ reserveVO.resId }"> <label
+															class="custom-control-label" for="${ reserveVO.resId }"></label>
 													</div>
 												</td>
-												<td>
-													<p class="mb-0 text-muted">
-														<strong>${ reserveVO.resDate }</strong>
-													</p>
-												</td>
-												<td>
-													<p class="mb-0 text-muted">
-														<strong>${ reserveVO.resTime }</strong>
-													</p> <small class="mb-0 text-muted">${ reserveVO.resTime }</small>
-												</td>
-												<td>
-													<p class="mb-0 text-muted">${ reserveVO.resTime }</p> <small
-													class="mb-0 text-muted">${ reserveVO.resTime }</small>
-												</td>
-												<td>
-													<p class="mb-0 text-muted">
-														<a href="#" class="text-muted">${ reserveVO.resTime }</a>
-													</p> <small class="mb-0 text-muted">${ reserveVO.resTime }</small>
-												</td>
-												<td class="text-muted">${ reserveVO.resTime }</td>
+												<td><c:choose>
+														<c:when test="${ reserveVO.status eq '0'}">
+															<p class="mb-0 text-primary">${ reserveVO.resTime }</p>
+														</c:when>
+														<c:when test="${ reserveVO.status eq '1'}">
+															<p class="mb-0 text-muted">${ reserveVO.resTime }</p>
+														</c:when>
+													</c:choose></td>
+												<td><c:choose>
+														<c:when test="${ reserveVO.status eq '0'}">
+															<p class="mb-0 text-primary">${ reserveVO.member }</p>
+														</c:when>
+														<c:when test="${ reserveVO.status eq '1'}">
+															<p class="mb-0 text-muted">${ reserveVO.member }</p>
+														</c:when>
+													</c:choose></td>
+												<td><c:choose>
+														<c:when test="${ reserveVO.status eq '0'}">
+															<p class="mb-0 text-primary">${ reserveVO.service }</p>
+														</c:when>
+														<c:when test="${ reserveVO.status eq '1'}">
+															<p class="mb-0 text-muted">${ reserveVO.service }</p>
+														</c:when>
+													</c:choose></td>
+												<c:choose>
+													<c:when test="${ reserveVO.status eq '0'}">
+														<td class="text-muted"><span
+															class="badge badge-pill badge-success">대기중</span></td>
+													</c:when>
+													<c:when test="${ reserveVO.status eq '1'}">
+														<td class="text-muted"><span
+															class="badge badge-pill badge-danger">처리완료</span></td>
+													</c:when>
+													<c:otherwise>
+														<td>${ reserveVO.service }</td>
+													</c:otherwise>
+												</c:choose>
+
 												<td><button
 														class="btn btn-sm dropdown-toggle more-horizontal"
 														type="button" data-toggle="dropdown" aria-haspopup="true"
@@ -92,14 +147,16 @@
 														<span class="text-muted sr-only">Action</span>
 													</button>
 													<div class="dropdown-menu dropdown-menu-right">
-														<a class="dropdown-item" href="#">Edit</a> <a
-															class="dropdown-item" href="#">Remove</a> <a
-															class="dropdown-item" href="#">Assign</a>
+														<a class="dropdown-item" href="#">처리완료</a> <a
+															class="dropdown-item" href="#">노쇼</a>
 													</div></td>
+
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+
+
 							</div>
 						</div>
 						<nav aria-label="Table Paging" class="my-3">
@@ -119,11 +176,35 @@
 		</main>
 		<!-- .container-fluid -->
 	</div>
+	
+	
+    
 	<!-- ======= Modals ======= -->
 	<jsp:include page="/WEB-INF/views/admin/include/modals.jsp" />
-	<!-- End Footer -->
-	<!-- ======= Footer ======= -->
-	<jsp:include page="/WEB-INF/views/admin/include/footer.jsp" />
-	<!-- End Footer -->
+	<!-- ======= Common JS ======= -->
+	<jsp:include page="/WEB-INF/views/admin/include/common-js.jsp" />
+	<script src="${ pageContext.request.contextPath }/resources/assets/js/gauge.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/jquery.sparkline.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/apexcharts.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/apexcharts.custom.js"></script>    
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/jquery.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/popper.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/moment.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/bootstrap.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/simplebar.min.js"></script>
+    <script src='${ pageContext.request.contextPath }/resources/assets/js/daterangepicker.js'></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/config.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/d3.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/topojson.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/datamaps.all.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/datamaps-zoomto.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/datamaps.custom.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/js/Chart.min.js"></script>
+    <script>
+      /* defind global options */
+      Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+      Chart.defaults.global.defaultFontColor = colors.mutedColor;
+    </script>
+	
 </body>
 </html>

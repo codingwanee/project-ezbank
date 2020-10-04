@@ -1,141 +1,304 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="madecss.css" rel="stylesheet" type="text/css"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <script>
-        function fnSearch() {
-            let category = document.getElementsByName("")
-            let keyword = document.getElementsByName("query").values();
+<title>Welcome to HanaEZ UP</title>
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-        }
+<link
+	href="${ pageContext.request.contextPath }/resources/assets/img/favicon.png"
+	rel="icon">
 
-        function list_pressCheck() {
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+	rel="stylesheet">
 
-        }
-    </script>
+<!-- common css -->
+<jsp:include page="/WEB-INF/views/home/include/common-css.jsp" />
+<jsp:include page="/WEB-INF/views/admin/include/common-css.jsp" />
+
 </head>
-
 <body>
 
+	<!-- ======= Header ======= -->
+	<jsp:include page="/WEB-INF/views/home/include/header.jsp" />
 
-<div id="HANA_CONTENTS_DIV">
+	<!-- ======= Main ======= -->
+	<div id="wrapper">
+		<!-- ======= Board Section ======= -->
+		<section id="board" class="container">
+			<!-- 		<main role="main" class="main-content"> -->
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="col-12">
+						<h2 class="page-title"><spring:message code="board.bread.title"></spring:message></h2>
+						<p class="card-text">
+							<spring:message code="board.bread.text"></spring:message>
+						</p>
+						<div class="row my-4">
+							<!-- Small table -->
+							<div class="col-md-12">
+								<div class="card shadow">
+									<div class="card-body">
+										<!-- table -->
+										<div id="dataTable-1_wrapper"
+											class="dataTables_wrapper dt-bootstrap4 no-footer">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+											<div class="row">
+												<div class="col-sm-12 col-md-5 align-right">
+													<div id="dataTable-1_filter" class="dataTables_filter">
+														<label>Search:<input type="search"
+															class="form-control form-control-sm" placeholder=""
+															aria-controls="dataTable-1"></label>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<table class="table datatables dataTable no-footer"
+														id="dataTable-1" role="grid"
+														aria-describedby="dataTable-1_info">
+														<thead>
+															<tr role="row">
+																<th class="sorting" tabindex="0"
+																	aria-controls="dataTable-1" rowspan="1" colspan="1"
+																	aria-label="#: activate to sort column ascending"
+																	style="width: 5%;">#</th>
+																<th class="sorting" tabindex="0"
+																	aria-controls="dataTable-1" rowspan="1" colspan="1"
+																	aria-label="Name: activate to sort column ascending"
+																	style="width: 10%;">주제</th>
+																<th class="sorting" tabindex="0"
+																	aria-controls="dataTable-1" rowspan="1" colspan="1"
+																	aria-label="Name: activate to sort column ascending"
+																	style="width: 50%;">제목</th>
+																<th class="sorting" tabindex="0"
+																	aria-controls="dataTable-1" rowspan="1" colspan="1"
+																	aria-label="Department: activate to sort column ascending"
+																	style="width: 10%;">글쓴이</th>
+																<th class="sorting" tabindex="0"
+																	aria-controls="dataTable-1" rowspan="1" colspan="1"
+																	aria-label="City: activate to sort column ascending"
+																	style="width: 10%;">조회수</th>
+																<th class="sorting" tabindex="0"
+																	aria-controls="dataTable-1" rowspan="1" colspan="1"
+																	aria-label="Date: activate to sort column ascending"
+																	style="width: 15%;">등록날짜</th>
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach items="${ list }" var="vo">
+																<tr role="row">
+																	<td>${ vo.num }</td>
+																	<td>${ vo.subject }</td>
+																	<td><a href="${ pageContext.request.contextPath }/board/${ vo.num }">${ vo.title }</a></td>
+																	<td>${ vo.writer }</td>
+																	<td>${ vo.viewCnt }</td>
+																	<td>${ vo.regDate }</td>
+																</tr>
+															</c:forEach>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-10">
+													<div class="dataTables_paginate paging_simple_numbers"
+														id="dataTable-1_paginate">
+														<ul class="pagination">
+															<li class="paginate_button page-item previous disabled"
+																id="dataTable-1_previous"><a href="#"
+																aria-controls="dataTable-1" data-dt-idx="0" tabindex="0"
+																class="page-link">Previous</a></li>
+															<li class="paginate_button page-item active"><a
+																href="#" aria-controls="dataTable-1" data-dt-idx="1"
+																tabindex="0" class="page-link">1</a></li>
+															<li class="paginate_button page-item "><a href="#"
+																aria-controls="dataTable-1" data-dt-idx="2" tabindex="0"
+																class="page-link">2</a></li>
+															<li class="paginate_button page-item next"
+																id="dataTable-1_next"><a href="#"
+																aria-controls="dataTable-1" data-dt-idx="3" tabindex="0"
+																class="page-link">Next</a></li>
+														</ul>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<a href="${ pageContext.request.contextPath }/board/write"><button class="btn btn-outline-secondary">새글쓰기</button></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- simple table -->
+						</div>
+						<!-- end section -->
+					</div>
+					<!-- .col-12 -->
+				</div>
+				<!-- .row -->
+			</div>
+			<!-- .container-fluid -->
+			<div class="modal fade modal-notif modal-slide" tabindex="-1"
+				role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="list-group list-group-flush my-n3">
+								<div class="list-group-item bg-transparent">
+									<div class="row align-items-center">
+										<div class="col-auto">
+											<span class="fe fe-box fe-24"></span>
+										</div>
+										<div class="col">
+											<small><strong>Package has uploaded
+													successfull</strong></small>
+											<div class="my-0 text-muted small">Package is zipped
+												and uploaded</div>
+											<small class="badge badge-pill badge-light text-muted">1m
+												ago</small>
+										</div>
+									</div>
+								</div>
+								<div class="list-group-item bg-transparent">
+									<div class="row align-items-center">
+										<div class="col-auto">
+											<span class="fe fe-download fe-24"></span>
+										</div>
+										<div class="col">
+											<small><strong>Widgets are updated
+													successfull</strong></small>
+											<div class="my-0 text-muted small">Just create new
+												layout Index, form, table</div>
+											<small class="badge badge-pill badge-light text-muted">2m
+												ago</small>
+										</div>
+									</div>
+								</div>
+								<div class="list-group-item bg-transparent">
+									<div class="row align-items-center">
+										<div class="col-auto">
+											<span class="fe fe-inbox fe-24"></span>
+										</div>
+										<div class="col">
+											<small><strong>Notifications have been sent</strong></small>
+											<div class="my-0 text-muted small">Fusce dapibus,
+												tellus ac cursus commodo</div>
+											<small class="badge badge-pill badge-light text-muted">30m
+												ago</small>
+										</div>
+									</div>
+									<!-- / .row -->
+								</div>
+								<div class="list-group-item bg-transparent">
+									<div class="row align-items-center">
+										<div class="col-auto">
+											<span class="fe fe-link fe-24"></span>
+										</div>
+										<div class="col">
+											<small><strong>Link was attached to menu</strong></small>
+											<div class="my-0 text-muted small">New layout has been
+												attached to the menu</div>
+											<small class="badge badge-pill badge-light text-muted">1h
+												ago</small>
+										</div>
+									</div>
+								</div>
+								<!-- / .row -->
+							</div>
+							<!-- / .list-group -->
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary btn-block"
+								data-dismiss="modal">Clear All</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade modal-shortcut modal-slide" tabindex="-1"
+				role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body px-5">
+							<div class="row align-items-center">
+								<div class="col-6 text-center">
+									<div class="squircle bg-success justify-content-center">
+										<i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+									</div>
+									<p>Control area</p>
+								</div>
+								<div class="col-6 text-center">
+									<div class="squircle bg-primary justify-content-center">
+										<i class="fe fe-activity fe-32 align-self-center text-white"></i>
+									</div>
+									<p>Activity</p>
+								</div>
+							</div>
+							<div class="row align-items-center">
+								<div class="col-6 text-center">
+									<div class="squircle bg-primary justify-content-center">
+										<i class="fe fe-droplet fe-32 align-self-center text-white"></i>
+									</div>
+									<p>Droplet</p>
+								</div>
+								<div class="col-6 text-center">
+									<div class="squircle bg-primary justify-content-center">
+										<i
+											class="fe fe-upload-cloud fe-32 align-self-center text-white"></i>
+									</div>
+									<p>Upload</p>
+								</div>
+							</div>
+							<div class="row align-items-center">
+								<div class="col-6 text-center">
+									<div class="squircle bg-primary justify-content-center">
+										<i class="fe fe-users fe-32 align-self-center text-white"></i>
+									</div>
+									<p>Users</p>
+								</div>
+								<div class="col-6 text-center">
+									<div class="squircle bg-primary justify-content-center">
+										<i class="fe fe-settings fe-32 align-self-center text-white"></i>
+									</div>
+									<p>Settings</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-        <h2>정보소통</h2>
-        <div class="locate">
-            HOME &gt; 고객센터 &gt; 손님의소리 &gt; <strong>정보소통</strong>
-        </div>
-    </section>
+		</section>
+	</div>
 
-    <!-- ======= Certificate Section ======= -->
-    <section>
-        <div class="container">
-            <div class="searchBoard">
-                <div class="searchField">
-                    <select id="searchField" name="searchField" title="검색분류 선택" class="wd80px">
-                        <option value="all" selected>검색분류</option>
-                        <option value="title">제목</option>
-                        <option value="content">내용</option>
-                    </select>
-                </div>
-                <div class="searchInput">
-                    <input type="text" title="검색어 입력" class="wd130px" id="query" name="query" value=""
-                           onkeydown="javascript:list_pressCheck((event),this);">
-                    <a href="#" onclick="javascript:fnSearch(); return false;">
-                        <button>검색</button>
-                    </a>
-                </div>
-            </div>
-            <div class="tbldiv board mt15">
-
-                <table class="tbl_col01" border="1" style="width: 100%">
-                    <colgroup>
-                        <col span="1" style="width: 10%;">
-                        <col span="1" style="width: 50%;">
-                        <col span="1" style="width: 15%;">
-                        <col span="1" style="width: 10%;">
-                        <col span="1" style="width: 15%;">
-                    </colgroup>
-                    <thead>
-                    <!-- <tr>-->
-                    <th class="b-tnone color3" scope="col" style="border-left: hidden;">번호</th>
-                    <th class="b-tnone color3" scope="col">제목</th>
-                    <th class="b-tnone color3" scope="col">글쓴이</th>
-                    <th class="b-tnone color3" scope="col">조회수</th>
-                    <th class="b-tnone color3" scope="col" style="border-right: hidden;">작성일</th>
-                    <!--</tr>-->
-                    </thead>
-                    <c:forEach items="${ boardList }" var="board" varStatus="loop">
-                        <tr>
-                            <td style="border-left: hidden;">${ boardVO.no }</td>
-                            <td>
-                                <a href="javascript:doAction(${ boardVO.no })" data-toggle="modal"
-                                   data-target="#loginModal">
-                                    <c:out value="${ boardVO.title }"/>
-                                </a>
-                                <%--
-                                <a href="detail.jsp?no=${ boardVO.no }">
-                                    <c:out value="${ boardVO.title }"/>
-                                </a>
-                                --%>
-                            </td>
-                            <td>${ boardVO.writer }</td>
-                            <td>${ boardVO.viewCnt }</td>
-                            <td style="border-right: hidden;">${ boardVO.regDate }</td>
-                        </tr>
-                    </c:forEach>
-                </table>
-
-            </div>
-
-            <div class="paging">
-                <a href="/contents/kor/recruit/notice/public/index.jsp" class="btn first">
-                    <img src="img/btn/btn_first.gif" alt="처음페이지"></a>
-                <a href="/contents/kor/recruit/notice/public/index.jsp" class="btn">
-                    <img src="img/btn/btn_prev.gif" alt="이전페이지"></a>
-                <a href="/contents/kor/recruit/notice/public/index.jsp" class="on">
-                    <strong>1</strong></a>
-                <a href="/contents/kor/recruit/notice/public/index.jsp" class="btn">
-                    <img src="img/btn/btn_next.gif" alt="다음페이지"></a>
-                <a href="/contents/kor/recruit/notice/public/index.jsp" class="btn last">
-                    <img src="img/btn/btn_last.gif" alt="마지막페이지"></a>
-            </div>
-            <br>
-            <div>
-                <c:if test="${ not empty userVO }">
-                    <button onclick="goWriteForm()" class="btn btn-primary">새글등록</button>
-                </c:if>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel" contenteditable="true">회원만 이용 가능한 서비스입니다.</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" contenteditable="true">
-                로그인 한 회원만 이용할 수 있습니다. 로그인 하러 가시겠습니까?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" contenteditable="true">로그인</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" contenteditable="true">취소</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+	<!-- ======= Footer ======= -->
+	<%@include file="/WEB-INF/views/home/include/footer.jsp"%>
+	<jsp:include page="/WEB-INF/views/home/include/common-js.jsp" />
+	<jsp:include page="/WEB-INF/views/admin/include/common-js.jsp" />
+	<!-- End Footer -->
 </body>
 </html>

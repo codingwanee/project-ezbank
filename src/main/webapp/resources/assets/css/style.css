@@ -23,7 +23,9 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6, .font-primary {
-  font-family: "Raleway", sans-serif;
+  font-family: "hanaM", sans-serif;
+  font-weight: 550;
+/*   font-family: "Raleway", sans-serif; */
 }
 
 /*--------------------------------------------------------------
@@ -37,7 +39,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   border-radius: 3px;
   right: 15px;
   bottom: 15px;
-  background: #00AAAA;
+  background: #17a2b8;
   color: #fff;
   transition: display 0.5s ease-in-out;
   z-index: 99999;
@@ -77,6 +79,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   padding: 15px 0;
   background: #fff;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  font-family: hanaM;
 }
 
 #header .logo h1 {
@@ -86,6 +89,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   line-height: 1;
   font-weight: 400;
   letter-spacing: 2px;
+  font-family: hana;
 }
 
 
@@ -100,6 +104,12 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   max-height: 40px;
 }
 
+@media (min-width: 1024px) {
+  #header .logo{
+    margin-left: 72px;
+  }
+}
+
 #main {
   margin-top: 72px;
 }
@@ -112,6 +122,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   margin: 0;
   padding: 0;
   list-style: none;
+  font-family: hanaM;
 }
 
 .nav-menu > ul > li {
@@ -127,16 +138,17 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   padding: 10px 15px;
   transition: 0.3s;
   font-size: 15px;
-  font-family: "Open Sans", sans-serif;
+  font-family: hanaUL, sans-serif;
+/*   font-family: "Open Sans", sans-serif; */
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
-  color: #00AAAA;
+  color: #17a2b8;
   text-decoration: none;
 }
 
 .nav-menu .get-started a {
-  background: #00AAAA;
+  background: #17a2b8;
   color: #fff;
   border-radius: 50px;
   margin: 0 15px;
@@ -176,13 +188,13 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 .nav-menu .drop-down ul a {
   padding: 10px 20px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 550;
   text-transform: none;
   color: #3c1300;
 }
 
 .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 .nav-menu .drop-down > a:after {
@@ -250,7 +262,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   position: relative;
   color: #f9d1c0;
   padding: 10px 20px;
-  font-weight: 500;
+  font-weight: 550;
   transition: 0.3s;
 }
 
@@ -260,7 +272,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 .mobile-nav .get-started a {
-  background: #00AAAA;
+  background: #17a2b8;
   color: #fff;
   border-radius: 50px;
   margin: 15px;
@@ -348,26 +360,29 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   height: 70vh;
   background: #F9FFFF;
   border-bottom: 2px solid #BEE6E1;
-  margin: 72px 0 -72px 0;
+/*   margin: 72px 0 -72px 0; */
+  margin: 0 0 -72px 0;
 }
 
 #hero h1 {
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
   font-size: 48px;
-  font-weight: 700;
+  font-weight: 550;
   line-height: 56px;
   color: #4e4039;
+  font-family: hanaM;
 }
 
 #hero h2 {
   color: #a08f86;
   margin-bottom: 50px;
   font-size: 24px;
+  font-family: hanaM;
 }
 
 #hero .btn-get-started {
   font-family: "Raleway", sans-serif;
-  font-weight: 500;
+  font-weight: 550;
   font-size: 16px;
   letter-spacing: 1px;
   display: inline-block;
@@ -376,7 +391,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   transition: 0.5s;
   margin: 10px;
   color: #fff;
-  background: #00AAAA;
+  background: #17a2b8;
 }
 
 #hero .btn-get-started:hover {
@@ -390,6 +405,9 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
+  }
+  #hero .hero-img img {
+    margin-left: 100px;
   }
 }
 
@@ -462,11 +480,14 @@ section {
 .section-title {
   text-align: center;
   padding-bottom: 30px;
+  font-family: hanaM;
+  /* 추가한 내용 */
+  margin-top: 40px;
 }
 
 .section-title h2 {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 550;
   padding-bottom: 0;
   line-height: 1px;
   margin-bottom: 15px;
@@ -478,7 +499,7 @@ section {
   margin-bottom: 15px;
   position: relative;
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 550;
   color: #4e4039;
 }
 
@@ -488,7 +509,7 @@ section {
   display: block;
   width: 60px;
   height: 2px;
-  background: #00AAAA;
+  background: #17a2b8;
   bottom: 0;
   left: calc(50% - 30px);
 }
@@ -497,14 +518,14 @@ section {
 # About
 --------------------------------------------------------------*/
 .about h3 {
-  font-weight: 700;
+  font-weight: 550;
   font-size: 34px;
   color: #4e4039;
 }
 
 .about h4 {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 550;
   margin-top: 5px;
   color: #7a6960;
 }
@@ -512,10 +533,12 @@ section {
 .about i {
   font-size: 48px;
   margin-top: 15px;
-  color: #f39e7a;
+/*   color: #17a2b8; */
+  color: #005AC4;
 }
 
 .about p {
+	font-family: hanaUL;
   font-size: 15px;
   color: #5a6570;
 }
@@ -550,20 +573,20 @@ section {
 
 .services .icon-box:hover {
   transform: translateY(-5px);
-  border-color: #00AAAA;
+  border-color: #17a2b8;
 }
 
 .services .icon i {
   font-size: 48px;
   line-height: 1;
   margin-bottom: 15px;
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 .services .title {
-  font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
+  font-family: hanaM;
 }
 
 .services .title a {
@@ -574,6 +597,7 @@ section {
   font-size: 15px;
   line-height: 28px;
   margin-bottom: 0;
+  font-family: hanaUL;
 }
 
 /*--------------------------------------------------------------
@@ -604,7 +628,7 @@ section {
 }
 
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -629,12 +653,20 @@ section {
   bottom: 0;
   transition: all ease-in-out 0.3s;
   z-index: 2;
+  
+  /* 사이즈 설정 추가 */
+  max-width:330px;
+  max-height:220px;
+  width: auto;
+  height: auto;
 }
 
 .portfolio .portfolio-wrap img {
   transition: 0.3s;
   position: relative;
   z-index: 1;
+  
+   overflow: hidden;
 }
 
 .portfolio .portfolio-wrap .portfolio-links {
@@ -649,7 +681,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a {
-  color: #00AAAA;
+  color: #17a2b8;
   margin: 0 4px;
   font-size: 18px;
   line-height: 1;
@@ -669,7 +701,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a:hover {
-  background: #00AAAA;
+  background: #17a2b8;
   color: #fff;
 }
 
@@ -729,10 +761,10 @@ section {
 .faq .faq-list a {
   display: block;
   position: relative;
-  font-family: #00AAAA;
+  font-family: hanaUL;
   font-size: 18px;
   font-weight: 600;
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 .faq .faq-list i {
@@ -746,10 +778,11 @@ section {
   padding-top: 5px;
   margin-bottom: 20px;
   font-size: 15px;
+  font-family: hanaUL;
 }
 
 .faq .faq-list a.collapse {
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 .faq .faq-list a.collapsed {
@@ -757,7 +790,7 @@ section {
 }
 
 .faq .faq-list a.collapsed:hover {
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 .faq .faq-list a.collapsed i::before {
@@ -799,7 +832,7 @@ section {
 }
 
 .team .member .member-info-content h4 {
-  font-weight: 700;
+  font-weight: 550;
   margin-bottom: 2px;
   font-size: 18px;
   color: #fff;
@@ -831,7 +864,7 @@ section {
 }
 
 .team .member .social a:hover {
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 .team .member .social i {
@@ -890,15 +923,15 @@ section {
 }
 
 .clients .owl-dot.active {
-  background-color: #00AAAA !important;
+  background-color: #17a2b8 !important;
 }
 
 /*--------------------------------------------------------------
 # Contact Us
 --------------------------------------------------------------*/
 .contact .info {
-  border-top: 3px solid #00AAAA;
-  border-bottom: 3px solid #00AAAA;
+  border-top: 3px solid #17a2b8;
+  border-bottom: 3px solid #17a2b8;
   padding: 30px;
   background: #fff;
   width: 100%;
@@ -907,7 +940,7 @@ section {
 
 .contact .info i {
   font-size: 20px;
-  color: #00AAAA;
+  color: #17a2b8;
   float: left;
   width: 44px;
   height: 44px;
@@ -958,19 +991,19 @@ section {
 }
 
 .contact .info .social-links a:hover {
-  background: #00AAAA;
+  background: #17a2b8;
   color: #fff;
 }
 
 .contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
-  background: #00AAAA;
+  background: #17a2b8;
   color: #fff;
 }
 
 .contact .php-email-form {
   width: 100%;
-  border-top: 3px solid #00AAAA;
-  border-bottom: 3px solid #00AAAA;
+  border-top: 3px solid #17a2b8;
+  border-bottom: 3px solid #17a2b8;
   padding: 30px;
   background: #fff;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
@@ -1041,7 +1074,7 @@ section {
 }
 
 .contact .php-email-form button[type="submit"] {
-  background: #00AAAA;
+  background: #17a2b8;
   border: 0;
   padding: 10px 24px;
   color: #fff;
@@ -1075,7 +1108,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #fff;
+/*   background: #fff; */
   padding: 0 0 30px 0;
   color: #212529;
   font-size: 14px;
@@ -1123,7 +1156,7 @@ section {
   background: none;
   font-size: 16px;
   padding: 0 20px;
-  background: #00AAAA;
+  background: #17a2b8;
   color: #fff;
   transition: 0.3s;
   border-radius: 4px;
@@ -1148,7 +1181,7 @@ section {
   margin: 0 0 30px 0;
   padding: 2px 0 2px 0;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 550;
 }
 
 #footer .footer-top .footer-contact p {
@@ -1203,13 +1236,13 @@ section {
 
 #footer .footer-top .footer-links ul a:hover {
   text-decoration: none;
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 #footer .footer-top .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #00AAAA;
+  background: #17a2b8;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -1240,7 +1273,7 @@ section {
 }
 
 #footer .credits a {
-  color: #00AAAA;
+  color: #17a2b8;
 }
 
 @media (max-width: 575px) {

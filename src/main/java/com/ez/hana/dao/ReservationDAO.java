@@ -18,6 +18,10 @@ public interface ReservationDAO {
 	 */
 	public List<ReservationVO> selectByBranch(ReservationVO reservationVO);
 	
-	
+	/**
+	 * 고객의 예약등록
+	 * @param reservVO
+	 */
+	public void insertReservation(ReservationVO reservVO);
 
 }

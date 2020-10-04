@@ -13,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ez.hana.vo.BranchVO;
+import com.ez.hana.vo.ReservationVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring/*.xml"})
@@ -44,11 +45,24 @@ public class BranchTest {
 	}
 	
 	@Test
-	public void 지점검색() {
+	public void 지점검색테스트() {
 		String keyword = "김포";
 		List<BranchVO> branchList = sqlSession.selectList("branchMapper.selectSome", keyword);
 		
 		assertNotNull(branchList);
+	}
+	
+	@Ignore
+	@Test
+	public void 예약등록테스트() {
+		
+		ReservationVO reservVO = new ReservationVO();
+		
+		reservVO.setBranch("BRF003");
+		reservVO.setMember("user");
+		
+		sqlSession.insert("reservationMapper.insertOne", reservVO);
+		
 	}
 
 }

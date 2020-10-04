@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ez.hana.dao.CodeDAO;
+import com.ez.hana.dao.CodeDAOImpl;
 import com.ez.hana.dao.MemberDAO;
 import com.ez.hana.home.service.CertifyService;
 import com.ez.hana.vo.CertFileVO;
@@ -33,18 +34,26 @@ public class CertifyController {
 	MemberDAO memberDAO;
 	
 	@Autowired
-	CodeDAO codeDAO;
+	CodeDAOImpl codeDAO;
+	
+	@Autowired
+	ServletContext servletContext;
 	
 	/* === 비대면인증 페이지로 이동 === */		
 	@GetMapping("/certify")
 	public String cerifyPage() {			
-		return "/home/certify/certify";
-	}	
+		return "home/certify/certify";
+	}
 	
-	/* === 파일 업로드 === */		
+	/* === 파일 업로드 페이지로 이동 ===*/
+	@GetMapping("/certify/file")
+	public String uploadPage() {
+		return "home/certify/uploadFile";
+	}
+	
+	/* === 파일 업로드 프로세스 === */
 	@PostMapping("/certify")
 	public ModelAndView applyCertification(MultipartHttpServletRequest multiRequest, HttpServletRequest request) throws Exception {
-	
 		
 		CertFileVO certFileVO = new CertFileVO();
 		String originName = null;
@@ -59,9 +68,11 @@ public class CertifyController {
 		CountryVO countryVO = codeDAO.getCountry(nation);
 		String certId = countryVO.getCodeAlpha3() + String.format("%09d", getCertId());// 국적 정보와 시퀀스가 조합된 12자리의 신청번호 생성
 		
-		ModelAndView mav = new ModelAndView("/home/certify/completed");
+		ModelAndView mav = new ModelAndView("home/certify/completed");
 		
-		String uploadDir = "d:/Polytech/fileStorage/";
+		String uploadDir = "d:/Polytech/fileStorage/"; // local		
+//		String uploadDir = servletContext.getRealPath("/upload/"); // 실제 배포되는 폴더의 경로
+//		System.out.println("uploadDir : " + uploadDir);
 
 		Iterator<String> iter = multiRequest.getFileNames();
 		
@@ -99,8 +110,7 @@ public class CertifyController {
 		certifyService.saveFileInfo(certFileVO);
 		
 		/* === 신청기록 생성 === */
-		CertHistoryVO certHistoryVO = new CertHistoryVO();
-			
+		CertHistoryVO certHistoryVO = new CertHistoryVO();			
 		
 		certHistoryVO.setCertId(certId);
 		certHistoryVO.setApplicantId(applicantVO.getId());
@@ -108,8 +118,12 @@ public class CertifyController {
 		certHistoryVO.setApplicantNtnKo(countryVO.getNameKo());
 		certHistoryVO.setApplicantNtnEn(countryVO.getNameEn());
 		certHistoryVO.setFileName(saveName);
+		certHistoryVO.setReason(request.getParameter("reason")); // 금융거래목적
 		
 		certifyService.saveCertHistory(certHistoryVO);
+		mav.addObject("certHistoryVO", certHistoryVO);
+		
+		
 		
 		return mav;
 	}
@@ -121,7 +135,4 @@ public class CertifyController {
 		return certId;
 	}
 	
-	
-
-
 }

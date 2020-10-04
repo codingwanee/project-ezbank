@@ -15,6 +15,7 @@
 		</a></li>
 		<li class="nav-item nav-notif"><a
 			class="nav-link text-muted my-2" href="./#" data-toggle="modal"
+			onclick="javascript:getCounts();"
 			data-target=".modal-notif"> <span class="fe fe-bell fe-16"></span>
 				<span class="dot dot-md bg-success"></span>
 		</a></li>
@@ -40,11 +41,13 @@
 		<!-- nav bar -->
 		<div class="w-100 mb-4 d-flex">
 			<a class="navbar-brand mx-auto mt-2 flex-fill text-center"
-				href="./index.html"> <svg version="1.1" id="logo"
+				href="${ pageContext.request.contextPath }/admin">
+<%-- 				<img src="${ pageContext.request.contextPath }/resources/imgages/adminlogo.png" >				 --%>
+ 				<svg version="1.1" id="logo"
 					class="navbar-brand-img brand-sm"
 					xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 120 120" xml:space="preserve">
+					viewBox="0 0 120 120" xml:space="preserve">               
                 <g>
                   <polygon class="st0"
 						points="78,105 15,105 24,87 87,87 	" />
@@ -80,7 +83,7 @@
                 </li>
               </ul>
             </li>
-          </ul> -->
+          </ul> -->										
 		<p class="text-muted nav-heading mt-4 mb-1">
 			<span>관리목록</span>
 		</p>
@@ -88,18 +91,20 @@
 			<li class="nav-item dropdown"><a href="#members"
 				data-toggle="collapse" aria-expanded="false"
 				class="dropdown-toggle nav-link"> <i class="fe fe-user fe-16"></i>
-					<span class="ml-3 item-text">손님</span>
+					<span class="ml-3 item-text">통역사</span>
 			</a>
 				<ul class="collapse list-unstyled pl-4 w-100" id="members">
 					<li class="nav-item"><a class="nav-link pl-3"
-						href="./ui-color.html"><span class="ml-1 item-text">Colors</span>
+						href="${ pageContext.request.contextPath }/admin/translator">
+						<span class="ml-1 item-text">통역사 신청목록</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link pl-3"
-						href="./ui-typograpy.html"><span class="ml-1 item-text">Typograpy</span></a>
-					</li>
+						href="${ pageContext.request.contextPath }/admin/translator">
+						<span class="ml-1 item-text">활동중인 통역사 목록</span>
+					</a></li>
 					<li class="nav-item"><a class="nav-link pl-3"
-						href="./ui-icons.html"><span class="ml-1 item-text">Icons</span></a>
-					</li>
+						href="${ pageContext.request.contextPath }/admin/board/list">
+						<span class="ml-1 item-text">정보교류 게시판</span></a></li>
 				</ul></li>
 			<li class="nav-item dropdown"><a href="#branch"
 				data-toggle="collapse" aria-expanded="false"
@@ -125,27 +130,9 @@
 				<ul class="collapse list-unstyled pl-4 w-100" id="account">
 					<li class="nav-item"><a class="nav-link pl-3"
 						href="${ pageContext.request.contextPath }/admin/branch/list"><span
-							class="ml-1 item-text">지점목록</span></a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/branch/register"><span
-							class="ml-1 item-text">지점등록</span></a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="${ pageContext.request.contextPath }/admin/branch/reservations"><span
-							class="ml-1 item-text">예약현황</span></a></li>
+							class="ml-1 item-text">계좌목록</span></a></li>
 				</ul></li>
-			<li class="nav-item dropdown"><a href="#tables"
-				data-toggle="collapse" aria-expanded="false"
-				class="dropdown-toggle nav-link"> <i class="fe fe-grid fe-16"></i>
-					<span class="ml-3 item-text">게시판</span>
-			</a>
-				<ul class="collapse list-unstyled pl-4 w-100" id="tables">
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="./table_basic.html"><span class="ml-1 item-text">Basic
-								Tables</span></a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="./table_advanced.html"><span class="ml-1 item-text">Advanced
-								Tables</span></a></li>
-				</ul></li>
+			
 			<li class="nav-item dropdown"><a href="#certify"
 				data-toggle="collapse" aria-expanded="false"
 				class="dropdown-toggle nav-link"> <i class="fe fe-shield fe-16"></i>
@@ -154,10 +141,7 @@
 				<ul class="collapse list-unstyled pl-4 w-100" id="certify">
 					<li class="nav-item"><a class="nav-link pl-3"
 						href="${ pageContext.request.contextPath }/admin/certify/list"><span
-							class="ml-1 item-text">인증신청목록</span></a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="./table_advanced.html"><span class="ml-1 item-text">Advanced
-								Tables</span></a></li>
+							class="ml-1 item-text">인증신청 목록</span></a></li>
 				</ul></li>
 			<li class="nav-item dropdown"><a href="#reservation"
 				data-toggle="collapse" aria-expanded="false"
@@ -168,10 +152,11 @@
 					<li class="nav-item"><a class="nav-link pl-3"
 						href="${ pageContext.request.contextPath }/admin/reserv/list"><span
 							class="ml-1 item-text">예약현황</span></a></li>
-					<li class="nav-item"><a class="nav-link pl-3"
-						href="./table_advanced.html"><span class="ml-1 item-text">Advanced
-								Tables</span></a></li>
 				</ul></li>
+				
+<%-- 			<li class="nav-item dropdown"><a href="${ pageContext.request.contextPath }/admin/sample"
+				data-toggle="collapse" aria-expanded="false"
+			><span class="ml-3 item-text">test</span></a></li> --%>
 		</ul>
 		<div class="btn-box w-100 mt-4 mb-1">
 			<a href="${ pageContext.request.contextPath }/" target="_blank"
@@ -182,3 +167,30 @@
 		</div>
 	</nav>
 </aside>
+
+<script>
+
+function getCounts() {
+	
+	$.ajax({
+		url : '${ pageContext.request.contextPath }/admin/certify/count',
+		type : 'get',
+		success : function(data) {
+			$('#certify-count').empty();					
+			/* let list = JSON.parse(data); */				
+			
+			let str = '';
+			str += data;
+			$('#certify-count').append(str);		
+			
+		},
+		error : function() {
+			$('#brSearch-result').empty();
+			let str = 'An Error has occured.';
+			$('#brSearch-result').append(str);
+		}
+	})
+	
+}
+
+</script>

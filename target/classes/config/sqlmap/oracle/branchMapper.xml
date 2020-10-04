@@ -5,17 +5,17 @@
 <mapper namespace="branchMapper">
 	<resultMap type="branchVO" id="branchMap">
 		<result column="NAME_KO" property="nameKo" />
-		<result column="name_en" property="nameEn" />
-		<result column="addr_ko_old" property="addrKoOld" />
+		<result column="NAME_EN" property="nameEn" />
+		<result column="ADDR_KO_OLD" property="addrKoOld" />
 		<result column="ADDR_KO_NEW" property="addrKoNew" />
-		<result column="addr_en" property="addrEn" />
-		<result column="reg_date" property="regDate" />
+		<result column="ADDR_EN" property="addrEn" />
+		<result column="REG_DATE" property="regDate" />
 	</resultMap>	
 	<!-- 지점 전체목록 조회 -->
 	<select id="selectAll" resultType="branchVO" resultMap="branchMap" >
 		SELECT *
 		FROM TB_BRANCH
-	</select>	
+	</select>
 	
 	<!-- 지점검색 -->
 	<select id="selectSome" parameterType="String" resultType="branchVO" resultMap="branchMap" >
@@ -25,6 +25,13 @@
 		OR ADDR_KO_OLD LIKE '%' ||  #{keyword} || '%' OR ADDR_KO_NEW LIKE '%' ||  #{keyword} || '%' OR ADDR_EN LIKE '%' ||  #{keyword} || '%'
 	</select>	
 	
+	<!-- 지점정보 조회 -->
+	<select id="selectOne" parameterType="String" resultType="branchVO" resultMap="branchMap">
+		SELECT *
+		FROM TB_BRANCH
+		WHERE BID = #{bid}
+	</select>
+		
 	<!-- 지점등록 -->
 	<insert id="insert" parameterType="branchVO">	 	
 		INSERT INTO TB_BRANCH (BID, NAME_KO, NAME_EN, ADDR_KO_OLD, ADDR_KO_NEW, ADDR_EN, TEL, LOC, REG_DATE)

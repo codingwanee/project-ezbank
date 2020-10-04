@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ez.hana.vo.BoardVO;
+import com.ez.hana.vo.CommentVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -14,48 +15,86 @@ public class BoardDAOImpl implements BoardDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	// 목록조회
 	@Override
-	public List<BoardVO> selectAll(String boardType) {
-		List<BoardVO> boardList = sqlSession.selectList("home.dao.BoardDAO.selectAll", boardType);
-		return boardList;
+	public List<BoardVO> selectAll() {
+		List<BoardVO> list = sqlSession.selectList("boardMapper.selectAll");
+		return list;
+	}
+
+	// 상세조회
+	@Override
+	public BoardVO selectOne(int num) {
+		BoardVO boardVO = sqlSession.selectOne("boardMapper.selectOne", num);
+		return boardVO;
 	}
 	
+	// 상세글 조회시 조회수 증가
 	@Override
-	public List<BoardVO> selectAllNotices() {
-		List<BoardVO> boardList = sqlSession.selectList("home.dao.BoardDAO.selectAllNotices");
-		return boardList;
+	public void updateViewCnt(int num) {
+		sqlSession.update("boardMapper.updateViewCnt", num);
 	}
 
+	// 새글 등록
 	@Override
-	public BoardVO selectOne(int postId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void insertOne(BoardVO boardVO) {
+		sqlSession.insert("boardMapper.insertOne", boardVO);
 	}
-
-	@Override
-	public void insert(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
+	// 답글 등록
 	@Override
 	public void insertReply(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.insert("boardMapper.insertReply", boardVO);		
 	}
 
+	// 글 수정
 	@Override
-	public void update(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		
+	public void updateOne(BoardVO boardVO) {
+		sqlSession.selectOne("boardMapper.updateOne", boardVO);
 	}
 
+	// 글 삭제
 	@Override
-	public void delete(int postId) {
-		// TODO Auto-generated method stub
-		
+	public void deleteOne(int num) {
+		sqlSession.selectOne("boardMapper.deleteOne", num);
 	}
 	
 	
+	
+	/////////////////////////// 댓글 ////////////////////////////////
+	
+	// 댓글 조회
+	@Override
+	public List<CommentVO> selectAllComments(int num) {
+		List<CommentVO> commentList = sqlSession.selectList("boardMapper.selectAllComment", num);
+		return commentList;
+	}
+
+	// 댓글 등록
+	@Override
+	public void insertComment(CommentVO commentVO) {
+		sqlSession.insert("boardMapper.insertComment", commentVO);
+	}
+	
+	// 댓글 등록 시 원글 댓글수 증가
+	@Override
+	public void updateCommentCnt(int num) {
+		sqlSession.update("boardMapper.updateCmtCnt", num);
+	}
+	
+	// 댓글 수정
+	@Override
+	public void updateComment(CommentVO commentVO) {
+		sqlSession.update("boardMapper.updateComment", commentVO);
+	}
+
+	// 댓글 삭제
+	@Override
+	public void deleteComment(CommentVO commentVO) {
+		sqlSession.delete("boardMapper.deleteComment", commentVO);		
+	}
+	
+
+
 
 }

@@ -14,13 +14,30 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public MemberVO login(MemberVO memberVO) {
-		MemberVO loginVO = sqlSession.selectOne("home.dao.MemberDAO.login", memberVO);
+		MemberVO loginVO = sqlSession.selectOne("memberMapper.login", memberVO);
 		return loginVO;
 	}
 	
 	@Override
+	public void join(MemberVO memberVO) {
+		sqlSession.insert("memberMapper.insertOne", memberVO);		
+	}
+	
+	@Override
 	public MemberVO selectOne(MemberVO loginVO) {
-		MemberVO memberVO = sqlSession.selectOne("home.dao.MemberDAO.selectOne", loginVO);
+		MemberVO memberVO = sqlSession.selectOne("memberMapper.selectOne", loginVO);
 		return memberVO;
+	}
+	
+	@Override
+	public MemberVO selectOneById(String id) {
+		MemberVO memberVO = sqlSession.selectOne("memberMapper.selectOne", id);
+		return memberVO;
+	}
+	
+	// 인증상태 변경
+	@Override
+	public void updateCertStatus(MemberVO memberVO) {
+		sqlSession.update("memberMapper.updateStatus", memberVO);
 	}
 }

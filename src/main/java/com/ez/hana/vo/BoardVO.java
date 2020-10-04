@@ -1,26 +1,27 @@
 package com.ez.hana.vo;
 
 public class BoardVO {
-	
-	int postId;
-	String title;
+
+	int num;
 	String writer;
-	String boardType; // 게시판
 	String category;
+	String subject;
+	String title;
 	String content;
-	String redDate;
-	int viewCnt;
-	int cmtCnt;
+	String regDate;
 	int origin;
 	int depth;
 	int ord;
+	int cmtCnt;
+	int viewCnt;
+	String status;
 
-	public int getPostId() {
-		return postId;
+	public int getNum() {
+		return num;
 	}
 
-	public void setPostId(int postId) {
-		this.postId = postId;
+	public void setNum(int num) {
+		this.num = num;
 	}
 
 	public String getWriter() {
@@ -31,20 +32,20 @@ public class BoardVO {
 		this.writer = writer;
 	}
 
-	public String getBoardType() {
-		return boardType;
-	}
-
-	public void setBoardType(String boardType) {
-		this.boardType = boardType;
-	}
-
 	public String getCategory() {
 		return category;
 	}
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public String getTitle() {
@@ -63,28 +64,12 @@ public class BoardVO {
 		this.content = content;
 	}
 
-	public String getRedDate() {
-		return redDate;
+	public String getRegDate() {
+		return regDate;
 	}
 
-	public void setRedDate(String redDate) {
-		this.redDate = redDate;
-	}
-
-	public int getViewCnt() {
-		return viewCnt;
-	}
-
-	public void setViewCnt(int viewCnt) {
-		this.viewCnt = viewCnt;
-	}
-
-	public int getCmtCnt() {
-		return cmtCnt;
-	}
-
-	public void setCmtCnt(int cmtCnt) {
-		this.cmtCnt = cmtCnt;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
 	}
 
 	public int getOrigin() {
@@ -111,6 +96,36 @@ public class BoardVO {
 		this.ord = ord;
 	}
 
-	
+	public int getCmtCnt() {
+		return cmtCnt;
+	}
+
+	public void setCmtCnt(int cmtCnt) {
+		this.cmtCnt = cmtCnt;
+	}
+
+	public int getViewCnt() {
+		return viewCnt;
+	}
+
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardVO [num=" + num + ", writer=" + writer + ", category=" + category + ", subject=" + subject
+				+ ", title=" + title + ", content=" + content + ", regDate=" + regDate + ", origin=" + origin
+				+ ", depth=" + depth + ", ord=" + ord + ", cmtCnt=" + cmtCnt + ", viewCnt=" + viewCnt + ", status="
+				+ status + "]";
+	}
 
 }

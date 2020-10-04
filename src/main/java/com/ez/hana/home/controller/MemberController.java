@@ -4,9 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,7 +50,7 @@ public class MemberController {
 			} else {
 				mav.setViewName("redirect:/" + dest);				
 				session.removeAttribute("dest");
-			}					
+			}			
 			
 			mav.addObject("loginVO", loginVO);
 		}
@@ -60,7 +63,7 @@ public class MemberController {
 		status.setComplete(); // 세션 초기화		
 		return "redirect:/";
 	}
-
+	
 	@GetMapping("/join")
 	public String joinForm() {
 		return "home/member/join";
@@ -97,7 +100,7 @@ public class MemberController {
 		}
 		
 		MemberVO fakeloginVO = new MemberVO();
-		fakeloginVO.setId("user");
+		fakeloginVO.setId("indra");
 		fakeloginVO.setType("0");
 		
 		mav.addObject("loginVO", fakeloginVO);
@@ -105,4 +108,12 @@ public class MemberController {
 		return mav;
 	}
 
+	@ResponseBody
+	@GetMapping("/idCheck")
+	public Boolean idCheck(String id) {
+		
+		Boolean bool = memberService.checkIdDuplicated(id);
+		
+		return bool;
+	}
 }

@@ -4,22 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
-<!-- Simple bar CSS -->
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/assets/css/simplebar.css">
-<!-- Fonts CSS -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
-	rel="stylesheet">
-<!-- App CSS -->
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/assets/css/app-light.css"
-	id="lightTheme" disabled>
-<link rel="stylesheet"
-	href="${ pageContext.request.contextPath }/resources/assets/css/app-dark.css"
-	id="darkTheme">
+<!-- ======= Head ======= -->
+<title>HanaEZ UP Admin Side</title>
+<!-- Favicons -->
+<link href="${ pageContext.request.contextPath }/resources/assets/img/favicon.png" rel="icon">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<jsp:include page="/WEB-INF/views/admin/include/common-css.jsp" />
 
 <link rel="stylesheet" type="text/css"
 	href="${ pageContext.request.contextPath }/resources/css/admin.css">
@@ -31,28 +22,22 @@
 		<div class="row">
 			<div class="col-lg-3 col-md-2"></div>
 			<div class="col-lg-6 col-md-8 login-box">
-				<div class="col-lg-12 login-key">
-					<i class="fa fa-key" aria-hidden="true"></i>
-				</div>
-				<div class="col-lg-12 login-title">
-				HanaEZ-UP<br>ADMIN PANEL</div>
-
+				<div class="col-lg-12 login-title mt-5">
+					HanaEZ-UP<br>ADMIN PANEL</div>
 				<div class="col-lg-12 login-form">
 					<div class="col-lg-12 login-form">
 						<form action="${ pageContext.request.contextPath }/admin/login"
-							method="post" name="login">
-							<div class="form-group">
-								<label class="form-control-label">사원번호</label> <input
-									type="text" class="form-control" name="eid">
-							</div>
-							<div class="form-group">
-								<label class="form-control-label">패스워드</label> <input
-									type="password" class="form-control" name="password">
-							</div>
+							method="post" name="login">							
 
-							<div class="col-lg-12 loginbttm">
-								<div class="col-lg-6 login-btm login-button">
-									<button type="submit" class="btn btn-outline-primary">LOGIN</button>
+							<div class="form-group">
+								<input type="text" class="form-control hanaUL" name="eid" placeholder="행원번호">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control hanaUL" name="password" placeholder="비밀번호">
+							</div>
+							<div class="col-lg-12 justify-content-center align-items-center">
+								<div class="col-lg-12 login-button align-items-center">
+									<button type="submit" class="btn btn-login hanaUL">로그인</button>
 								</div>
 							</div>
 						</form>
@@ -61,10 +46,13 @@
 				<div class="col-lg-3 col-md-2"></div>
 			</div>
 		</div>
+		<div class="row justify-content-center align-items-center mt-2">
+		<img src="${ pageContext.request.contextPath }/resources/images/logo/login-copyright.png">	
+		</div>
 	</div>
 
 	<!-- ======= Footer ======= -->
-	<jsp:include page="/WEB-INF/views/admin/include/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/admin/include/common-js.jsp" />
 	<!-- End Footer -->
 
 </body>

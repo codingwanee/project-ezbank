@@ -33,5 +33,14 @@ public class ReservationDAOImpl implements ReservationDAO {
 		List<ReservationVO> reservVO = sqlSession.selectList("reservationMapper.selectByBranch", reservationVO);
 		return reservVO;
 	}
+	
+	/**
+	 * 고객의 예약등록
+	 * @param reservVO
+	 */
+	@Override
+	public void insertReservation(ReservationVO reservVO) {
+		sqlSession.insert("reservationMapper.insertOne", reservVO);		
+	}
 
 }

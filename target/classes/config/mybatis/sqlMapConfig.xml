@@ -5,7 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.ez.hana.vo.BoardVO" alias="boardVO" />
-		<!--<typeAlias type="com.ez.hana.home.vo.CommentVO" alias="commentVO" /> -->
+		<typeAlias type="com.ez.hana.vo.CommentVO" alias="commentVO" />
 		<typeAlias type="com.ez.hana.vo.MemberVO" alias="memberVO" />
 		<typeAlias type="com.ez.hana.vo.BranchVO" alias="branchVO" />
 		<typeAlias type="com.ez.hana.vo.CertHistoryVO" alias="certHistoryVO" />
@@ -13,10 +13,7 @@
 		<typeAlias type="com.ez.hana.vo.ReservationVO" alias="reservationVO" />
 		<typeAlias type="com.ez.hana.vo.EmployeeVO" alias="employeeVO" />
 		<typeAlias type="com.ez.hana.vo.CountryVO" alias="countryVO" />
+		<typeAlias type="com.ez.hana.vo.TranslatorVO" alias="translatorVO" />
 	</typeAliases>
-	
-	<!--<typeHandlers>
-		<typeHandler handler="com.naver.dbill.admin.common.handler.CustomDateHandler" javaType="java.sql.Date" jdbcType="DATE"/>
-	</typeHandlers>
-	-->
+
 </configuration>

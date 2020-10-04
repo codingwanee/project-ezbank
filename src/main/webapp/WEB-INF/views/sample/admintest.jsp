@@ -130,7 +130,7 @@
 
 
 	<!-- ======= Footer ======= -->
-	<jsp:include page="/WEB-INF/views/admin/include/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/admin/include/common-js.jsp" />
 	<!-- End Footer -->
 </body>
 </html>

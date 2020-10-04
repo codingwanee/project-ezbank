@@ -20,7 +20,7 @@ public class CodeDAOImpl implements CodeDAO {
 	 */
 	@Override
 	public CountryVO getCountry(String country) {
-		CountryVO countryVO = sqlSession.selectOne("codeMapper.selectCountry", country);
+		CountryVO countryVO = sqlSession.selectOne("codeMapper.selectOneCountry", country);
 		return countryVO;
 	}
 	

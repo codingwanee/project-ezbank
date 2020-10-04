@@ -3,8 +3,15 @@
 <!doctype html>
 <html>
 <head>
+<title>HanaEZ UP Admin Side</title>
+
 <!-- ======= Head ======= -->
-<jsp:include page="/WEB-INF/views/admin/include/head.jsp" />
+<jsp:include page="/WEB-INF/views/admin/include/common-css.jsp" />
+
+<!-- Favicons -->
+<link href="${ pageContext.request.contextPath }/resources/assets/img/favicon.png" rel="icon">
+
+
 <!-- End head -->
 </head>
 <body class="vertical  light  ">
@@ -82,7 +89,7 @@
 	<jsp:include page="/WEB-INF/views/admin/include/modals.jsp" />
 	<!-- End Footer -->
 	<!-- ======= Footer ======= -->
-	<jsp:include page="/WEB-INF/views/admin/include/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/admin/include/common-js.jsp" />
 	<!-- End Footer -->
 </body>
 </html>

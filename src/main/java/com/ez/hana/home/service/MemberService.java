@@ -13,5 +13,12 @@ public interface MemberService {
 	 * 회원 상세조회(마이페이지)
 	 */
 	public MemberVO mypage(MemberVO loginVO);
+
+	/**
+	 * 아이디 중복체크
+	 * @param id
+	 * @return bool
+	 */
+	public Boolean checkIdDuplicated(String id);
 	
 }

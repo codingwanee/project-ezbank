@@ -7,6 +7,7 @@
 		<result column="RES_ID" property="resId" />
 		<result column="RES_DATE" property="resDate"/>
 		<result column="RES_TIME" property="resTime"/>
+		<result column="REG_DATE" property="regDate"/>
 	</resultMap>
 	
 	<!-- 아직 처리되지 않은 지점 예약목록을 확인 -->
@@ -14,7 +15,17 @@
 		SELECT *
 		FROM TB_RESERVATION
 		WHERE RES_DATE = #{today} AND STATUS = '0'
-	</select>	
+		ORDER BY RES_TIME ASC
+	</select>
+
+	<!-- 신규 예약 등록 -->
+	<insert id="insertOne" parameterType="reservationVO">
+		INSERT INTO TB_RESERVATION
+		(RES_ID, BRANCH, MEMBER, RES_DATE, RES_TIME, SERVICE, STATUS, REG_DATE)
+		VALUES(
+		 (CONCAT('RSV', (LPAD(TO_CHAR(SEQ_RESERVATION.NEXTVAL), 9, '0'))))
+		,#{branch},#{member},#{resDate},#{resTime},#{service},'0', SYSDATE)
+	</insert>
 	
 	<!-- 로그인 한 직원의 근무지점에 따라 아직 처리되지 않은 지점 예약목록을 확인 -->
 	<select id="selectByBranch" parameterType="reservationVO" resultType="reservationVO" resultMap="reserveMap">
@@ -29,14 +40,6 @@
 		SET STATUS = '1'
 		WHERE RES_ID = #{resId}
 	</update>
-	
-	<select id="test" parameterType="reservationVO" resultType="reservationVO" resultMap="reserveMap">
-	
-		SELECT *
-		FROM TB_RESERVATION
-		WHERE BRANCH = #{branch} AND res_date = #{resDate}
-	
-	</select>
-	
+		
 
 </mapper>	

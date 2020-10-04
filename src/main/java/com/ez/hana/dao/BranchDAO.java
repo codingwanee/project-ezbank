@@ -16,6 +16,13 @@ public interface BranchDAO {
 	 * @param keyword 검색키워드
 	 */
 	public List<BranchVO> selectByKeyword(String keyword);
+	
+	/**
+	 * 지점코드로 지점조회
+	 * @param bid 지점코드
+	 * @return branchVO 지점 정보
+	 */
+	public BranchVO selectOne(String bid);
 
 	/**
 	 * 지점 등록

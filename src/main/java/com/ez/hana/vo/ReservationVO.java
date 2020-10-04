@@ -1,13 +1,16 @@
 package com.ez.hana.vo;
 
+
 public class ReservationVO {
 	String resId;
 	String branch;
 	String member;
+//	String country;
 	String resDate;
 	String resTime;
-	String subject;
+	String service;
 	String status;
+	String regDate;
 
 	public String getResId() {
 		return resId;
@@ -49,12 +52,12 @@ public class ReservationVO {
 		this.resTime = resTime;
 	}
 
-	public String getSubject() {
-		return subject;
+	public String getService() {
+		return service;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setService(String service) {
+		this.service = service;
 	}
 
 	public String getStatus() {
@@ -65,10 +68,18 @@ public class ReservationVO {
 		this.status = status;
 	}
 
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
 	@Override
 	public String toString() {
 		return "ReservationVO [resId=" + resId + ", branch=" + branch + ", member=" + member + ", resDate=" + resDate
-				+ ", resTime=" + resTime + ", subject=" + subject + ", status=" + status + "]";
+				+ ", resTime=" + resTime + ", service=" + service + ", status=" + status + ", regDate=" + regDate + "]";
 	}
 
 }

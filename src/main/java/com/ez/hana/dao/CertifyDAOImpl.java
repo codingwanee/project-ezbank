@@ -21,6 +21,7 @@ public class CertifyDAOImpl implements CertifyDAO {
 	 */
 	@Override
 	public void insertFile(CertFileVO certFileVO) {
+		System.out.println(certFileVO.toString());
 		sqlSession.insert("certifyMapper.insertFile", certFileVO);		
 	}
 	
@@ -40,6 +41,7 @@ public class CertifyDAOImpl implements CertifyDAO {
 	 */
 	@Override
 	public void insertHistory(CertHistoryVO certHistoryVO) {
+		System.out.println("certHistoryVO: " + certHistoryVO.toString());
 		sqlSession.insert("certifyMapper.insertHistory", certHistoryVO);		
 	}
 	
@@ -53,5 +55,36 @@ public class CertifyDAOImpl implements CertifyDAO {
 		return certList;
 	}
 	
+	/**
+	 * 신청기록 상세조회
+	 * @return certHistoryVO
+	 */
+	@Override
+	public CertHistoryVO selectOneHistory(String certId) {
+		CertHistoryVO certHistoryVO = sqlSession.selectOne("certifyMapper.selectOneHistory", certId);
+		return certHistoryVO;
+	}
+	
+	/**
+	 * 신청자의 지난기록 조회
+	 */
+	@Override
+	public List<CertHistoryVO> selectAllByApplicant(String applicantId) {
+		List<CertHistoryVO> certHistoryList = sqlSession.selectList("certifyMapper.selectAllByApplicant", applicantId);
+		return certHistoryList;
+	}
+	
+	// 미처리 건수 조회
+	@Override
+	public int selectCount() {
+		int count = sqlSession.selectOne("certifyMapper.selectCount");
+		return count;
+	}
+	
+	// 처리상태 변경
+	@Override
+	public void updateCertStatus(CertHistoryVO certHistoryVO) {
+		sqlSession.update("certifyMapper.updateStatus", certHistoryVO);		
+	}
 
 }

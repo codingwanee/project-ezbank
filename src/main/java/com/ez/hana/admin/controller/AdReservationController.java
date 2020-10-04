@@ -36,6 +36,15 @@ public class AdReservationController {
 		ModelAndView mav = new ModelAndView("admin/reserv/reservList");		
 		List<ReservationVO> reservationList = reservationService.displayReservByBranch(employeeVO.getBranch());
 		
+		ReservationVO reservationVO = new ReservationVO();
+		if(reservationList== null) {
+			reservationVO.setMember("none");
+			reservationVO.setService("none");
+			reservationVO.setResId("none");
+			reservationVO.setResTime("none");
+		}
+		reservationList.add(reservationVO);
+		
 		mav.addObject("reservationList", reservationList);
 		
 		return mav;
