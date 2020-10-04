@@ -47,7 +47,6 @@
 								<div class="card-body">
 									<div class="container">
 										<div class="row d-flex justify-content-center">
-
 											<div class="col-sm-8">
 												<div
 													class="row col-lg-12 align-items-center justify-content-center ">
